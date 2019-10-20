@@ -1,18 +1,18 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import data from './data/urban_units2'
+import urban_units from './data/urban_units2'
 
 const App = () => {
   var units_base = [{company:'IBM',street:'Agrestowa', no:'1'},
 									{company:'Apple',street:'1-Maja',no:'103'},
 									{company:'Asus',street: 'plac Ratuszowy',no:'13'}];
 
-var urban_units = [
-                  {id:'1',street: 'ul. 1 Maja 1f-13'},
-									{id:'2',street: 'al. gen. Władysława Andersa nieparzyste: 4-14A'},
-                  {id:'3',street: 'Plac Kołątaja parzyste: 1, 3 ,5 ,6 , 8, nieparzyste: 1'},
-                   {id:'4', street: 'Borowików'}
-                  ];
+// var urban_units = [
+//                   {id:'1',street: 'ul. 1 Maja 1f-13'},
+// 									{id:'2',street: 'al. gen. Władysława Andersa nieparzyste: 4-14A'},
+//                   {id:'3',street: 'ul. gen. Józefa Kustronia za wyjątkiem nr 92, 93, 99'},
+//                    {id:'4', street: 'Borowików'}
+//                   ];
 
 
 // var newArray = [{id:'1', company:'IBM',street:'Agrestowa', no:'1'},
@@ -20,35 +20,34 @@ var urban_units = [
 // 							{id:'2', company:'Asus',street: 'plac Ratuszowy',no:'13'}];
 
 //dzielenie stringa urban_units
-
-//tworzenie poprawionej tablicy z obiektami bazy ju
+console.log('trup:', urban_units[620].ULICA);
+//tworzenie poprawionej tablicy z obiektami bazy
 var id = [];
 var streets = [];
 var numbers = [];
 
 //tworze tablicę z id
 for (var key in urban_units) {
-    id.push(urban_units[key].id);
+    id.push(urban_units[key].ID);
   };
-
+console.log('id: ', id[10]);
 //tworzenie tablicy z samymi nazwami ulic
 for (var key in urban_units) {
-    streets.push(urban_units[key].street);
+    streets.push(urban_units[key].ULICA);
   };
 
 for(var i=0; i < streets.length; i++) {
- streets[i] = streets[i].replace(/(?<=([A-ZŻŹĆĄŚĘŁÓŃ][a-zżźćńółęąś]*))((\s\d|\sparzyste).*)/g, '');
-}
+  streets[i] = streets[i].replace(/(?<=([A-ZŻŹĆĄŚĘŁÓŃ][a-zżźćńółęąś]*))((\s\d|\sparzyste|\snieparzyste|\sza wyjątkiem).*)/g, '');
+ console.log('test: ', streets[10]);};
 
-console.log('Ulice: ', streets
-           )
 //tworzenie tablicy z samymi numerami (bez liter np.1a)
 numbers = urban_units
-  .map(unit => (unit.street.replace(/(?<=\d)[^\d,\-]/gi, "")));
+  .map(unit => (unit.ULICA.replace(/(?<=\d)[^\d,\-]/gi, "")));
 //tworzenie tablicy z samymi numerami
 for(var i=0; i < numbers.length; i++) {
- numbers[i] = numbers[i].match(/(?<=([A-ZŻŹĆĄŚĘŁÓŃ][a-zżźćńółęąś]*\s))((\d|parzyste|nieparzyste).*)/g);
+ numbers[i] = numbers[i].match(/(?<=([A-ZŻŹĆĄŚĘŁÓŃ][a-zżźćńółęąś]*\s))((\d|parzyste|nieparzyste|za wyjątkiem).*)/g);
 }
+
 //Przerobienie tablic w tablicy w tablicę ze stringami
 for(var i=0; i < numbers.length; i++) {
    if (numbers[i] === null) {
@@ -57,9 +56,8 @@ for(var i=0; i < numbers.length; i++) {
    else {
     numbers[i] = numbers[i].join();
    }
-};
 
-console.log('duopa', typeof numbers[1]);
+};
 
 //Funkcja konwersji stringa z zakresu numerów na same numery
 function convertRangeToNumbers(str) {
@@ -78,6 +76,7 @@ function convertRangeToNumbers(str) {
         var even_e = even_end.map(function(e) { return parseInt(e) });
 
         var odd_start = odd[0].match(/^\d+/g);
+        console.log('odd: ', odd);
         var odd_s = odd_start.map(function(e) { return parseInt(e) })
         var odd_end = odd[0].match(/[\d]+$/g);
         var odd_e = odd_end.map(function(e) { return parseInt(e) })
@@ -152,7 +151,6 @@ function convertRangeToNumbers(str) {
   //same nieparzyste z zakresem
   if (str.match(/^nieparzyste: \d+\-\d+$/g)) {
     var odd = str.match(/\d+\-\d+$/g);
-    console.log('stare: ', odd);
     var odd_start = odd[0].match(/^\d+/g);
     var odd_s = odd_start.map(function(e) { return parseInt(e)});
     var odd_end = odd[0].match(/[\d]+$/g);
@@ -180,9 +178,16 @@ function convertRangeToNumbers(str) {
         var strToNumber = str.split(',').map(Number);
         return strToNumber;
     }
+  //za wyjątkiem
+  if (str.match(/^za wyjątkiem nr/g)) {
+      var exception = str.match(/\d.*/g);
+      exception = exception[0].split(',').map(Number);
+      // var exceptionToNumber = exception.split(',').map(Number);
+      var numbers = {no: Number.POSITIVE_INFINITY, exception: exception};
+      return numbers;
+    }
  }
 //gotowa tablica z numerami
-console.log('telele: ', numbers);
 var fixedNumbers = [];
   for(var i=0; i < numbers.length; i++) {
     if (typeof numbers[i] === 'string')
@@ -194,9 +199,7 @@ var fixedNumbers = [];
     }
    };
 
-   console.log('dgiudg: ', fixedNumbers);
-
-  return (
+    return (
     <div>
       <p>React here!</p>
     </div>

@@ -2,7 +2,7 @@
  {
    "DZIELNICA": "MIKUSZOWICE ŚLĄSKIE",
    "JEDNOSTKA URBANISTYCZNA": 88,
-   "ULICA": "al. Armii Krajowej parzysta: 178-366, nieparzysta: 151-345",
+   "ULICA": "al. Armii Krajowej parzyste: 178-366, nieparzyste: 151-345",
    "NR_PAD": "200049547",
    "ID": 1400
  },
@@ -51,7 +51,7 @@
  {
    "DZIELNICA": "LESZCZYNY",
    "JEDNOSTKA URBANISTYCZNA": 40,
-   "ULICA": "al. gen. Władysława Andersa parzyste: 4-14A, nieparzyste: 19,21",
+   "ULICA": "al. gen. Władysława Andersa parzyste: 4-14A, nieparzyste: 19-21",
    "NR_PAD": "200049483",
    "ID": 478
  },
@@ -72,7 +72,7 @@
  {
    "DZIELNICA": "KOMOROWICE KRAKOWSKIE",
    "JEDNOSTKA URBANISTYCZNA": 67,
-   "ULICA": "pl. pl. Józefa Niemczyka",
+   "ULICA": "pl. Józefa Niemczyka",
    "NR_PAD": "200049492",
    "ID": 1008
  },
@@ -366,7 +366,7 @@
  {
    "DZIELNICA": "OSIEDLE SŁONECZNE",
    "JEDNOSTKA URBANISTYCZNA": 6,
-   "ULICA": "ul. Aleksandrowicka parzyste: 2-28, nieparzyste: 1-30, 31,33 ",
+   "ULICA": "ul. Aleksandrowicka parzyste: 2-28, nieparzyste: 1-33",
    "NR_PAD": "2467257",
    "ID": 65
  },
@@ -1409,7 +1409,7 @@
  {
    "DZIELNICA": "KOMOROWICE KRAKOWSKIE",
    "JEDNOSTKA URBANISTYCZNA": 67,
-   "ULICA": "ul. Czereśniowa parzysta 18-22, nieparzysta: 13-21A",
+   "ULICA": "ul. Czereśniowa parzyste 18-22, nieparzyste: 13-21A",
    "NR_PAD": "2466560",
    "ID": 1004
  },
@@ -1423,7 +1423,7 @@
  {
    "DZIELNICA": "HAŁCNÓW",
    "JEDNOSTKA URBANISTYCZNA": 72,
-   "ULICA": "ul. Czerwona parzysta: 112-132, nieparzysta: 151-187",
+   "ULICA": "ul. Czerwona parzyste: 112-132, nieparzyste: 151-187",
    "NR_PAD": "2467001",
    "ID": 1129
  },
@@ -1717,14 +1717,14 @@
  {
    "DZIELNICA": "KOMOROWICE KRAKOWSKIE",
    "JEDNOSTKA URBANISTYCZNA": 68,
-   "ULICA": "ul. Dusznicka parzysta: 124-176, nieparzysta: 113-123",
+   "ULICA": "ul. Dusznicka parzyste: 124-176, nieparzyste: 113-123",
    "NR_PAD": "2466989",
    "ID": 1022
  },
  {
    "DZIELNICA": "KOMOROWICE KRAKOWSKIE",
    "JEDNOSTKA URBANISTYCZNA": 67,
-   "ULICA": "ul. Dusznicka parzysta: 2-28A, nieparzysta: 1-59C",
+   "ULICA": "ul. Dusznicka parzyste: 2-28A, nieparzyste: 1-59C",
    "NR_PAD": "2466989",
    "ID": 988
  },
@@ -2354,7 +2354,7 @@
  {
    "DZIELNICA": "STRACONKA",
    "JEDNOSTKA URBANISTYCZNA": 81,
-   "ULICA": "ul. Górska parzysta: 24-150, nieparzysta: 27-151",
+   "ULICA": "ul. Górska parzyste: 24-150, nieparzyste: 27-151",
    "NR_PAD": "2466886",
    "ID": 1238
  },
@@ -3145,7 +3145,7 @@
  {
    "DZIELNICA": "WAPIENICA",
    "JEDNOSTKA URBANISTYCZNA": 55,
-   "ULICA": "ul. Jaworzańska parzysta: 40-198, nieparzysta: 41-187",
+   "ULICA": "ul. Jaworzańska parzyste: 40-198, nieparzyste: 41-187",
    "NR_PAD": "2466595",
    "ID": 693
  },
@@ -3908,7 +3908,7 @@
  {
    "DZIELNICA": "KOMOROWICE ŚLĄSKIE",
    "JEDNOSTKA URBANISTYCZNA": 66,
-   "ULICA": "ul. Komorowicka parzysta: 252-280, nieparzysta: 205-235",
+   "ULICA": "ul. Komorowicka parzyste: 252-280, nieparzyste: 205-235",
    "NR_PAD": "2466492",
    "ID": 953
  },
@@ -4195,7 +4195,7 @@
  {
    "DZIELNICA": "KOMOROWICE KRAKOWSKIE",
    "JEDNOSTKA URBANISTYCZNA": 68,
-   "ULICA": "ul. Kromparecka parzysta: 4-60A, nieparzysta: 7-101",
+   "ULICA": "ul. Kromparecka parzyste: 4-60A, nieparzyste: 7-101",
    "NR_PAD": "2466651",
    "ID": 1026
  },
@@ -5070,7 +5070,7 @@
  {
    "DZIELNICA": "KOMOROWICE ŚLĄSKIE",
    "JEDNOSTKA URBANISTYCZNA": 65,
-   "ULICA": "ul. Mazańcowicka parzysta: 34-68, nieparzysta: 37-65A",
+   "ULICA": "ul. Mazańcowicka parzyste: 34-68, nieparzyste: 37-65A",
    "NR_PAD": "2466480",
    "ID": 946
  },
@@ -5217,7 +5217,7 @@
  {
    "DZIELNICA": "WAPIENICA",
    "JEDNOSTKA URBANISTYCZNA": 58,
-   "ULICA": "ul. Międzyrzecka parzysta: 60-120, nieparzysta: 65-111",
+   "ULICA": "ul. Międzyrzecka parzyste: 60-120, nieparzyste: 65-111",
    "NR_PAD": "2466549",
    "ID": 745
  },
@@ -5777,7 +5777,7 @@
  {
    "DZIELNICA": "MIKUSZOWICE ŚLĄSKIE",
    "JEDNOSTKA URBANISTYCZNA": 87,
-   "ULICA": "ul. Olszówka parzysta: 16-50A, nieparzysta: 27-67",
+   "ULICA": "ul. Olszówka parzyste: 16-50A, nieparzyste: 27-67",
    "NR_PAD": "2466639",
    "ID": 1389
  },
@@ -6421,14 +6421,14 @@
  {
    "DZIELNICA": "KOMOROWICE ŚLĄSKIE",
    "JEDNOSTKA URBANISTYCZNA": 65,
-   "ULICA": "ul. Poligonowa parzysta: 8A-80, nieparzysta: 35-87",
+   "ULICA": "ul. Poligonowa parzyste: 8A-80, nieparzyste: 35-87",
    "NR_PAD": "2466348",
    "ID": 945
  },
  {
    "DZIELNICA": "",
    "JEDNOSTKA URBANISTYCZNA": 64,
-   "ULICA": "ul. Poligonowa parzysta: 96-156, nieparzysta: 99A-133A",
+   "ULICA": "ul. Poligonowa parzyste: 96-156, nieparzyste: 99A-133A",
    "NR_PAD": "",
    "ID": null
  },
@@ -6582,7 +6582,7 @@
  {
    "DZIELNICA": "MIKUSZOWICE KRAKOWSKIE",
    "JEDNOSTKA URBANISTYCZNA": 83,
-   "ULICA": "ul. Prosta parzyste46-88, nieparzyste: 43-73",
+   "ULICA": "ul. Prosta parzyste: 46-88, nieparzyste: 43-73",
    "NR_PAD": "2466256",
    "ID": 1289
  },
@@ -7758,7 +7758,7 @@
  {
    "DZIELNICA": "MIKUSZOWICE KRAKOWSKIE",
    "JEDNOSTKA URBANISTYCZNA": 83,
-   "ULICA": "ul. Strumienna parzysta: 26-32, nieparzysta: 21-31",
+   "ULICA": "ul. Strumienna parzyste: 26-32, nieparzyste: 21-31",
    "NR_PAD": "2466499",
    "ID": 1299
  },
@@ -8080,7 +8080,7 @@
  {
    "DZIELNICA": "WAPIENICA",
    "JEDNOSTKA URBANISTYCZNA": 55,
-   "ULICA": "ul. Światopełka parzysta: 48-90, nieparzysta: 51A-107",
+   "ULICA": "ul. Światopełka parzyste: 48-90, nieparzyste: 51A-107",
    "NR_PAD": "2466359",
    "ID": 675
  },
@@ -8311,7 +8311,7 @@
  {
    "DZIELNICA": "BIAŁA PÓŁNOC",
    "JEDNOSTKA URBANISTYCZNA": 30,
-   "ULICA": "ul. Towarowa parzysta: 30-70, nieparzysta: 21-55",
+   "ULICA": "ul. Towarowa parzyste: 30-70, nieparzyste: 21-55",
    "NR_PAD": "2467132",
    "ID": 391
  },
@@ -9214,7 +9214,7 @@
  {
    "DZIELNICA": "WAPIENICA",
    "JEDNOSTKA URBANISTYCZNA": 55,
-   "ULICA": "ul. Zapora parzysta: 4-24, nieparzysta: 3-29A",
+   "ULICA": "ul. Zapora parzyste: 4-24, nieparzyste: 3-29A",
    "NR_PAD": "2466533",
    "ID": 696
  },
@@ -9515,7 +9515,7 @@
  {
    "DZIELNICA": "LESZCZYNY",
    "JEDNOSTKA URBANISTYCZNA": 43,
-   "ULICA": "ul. Źródlana parzysta: 2-40 nieparzysta: 1-31",
+   "ULICA": "ul. Źródlana parzyste: 2-40 nieparzyste: 1-31",
    "NR_PAD": "2467100",
    "ID": 516
  },
