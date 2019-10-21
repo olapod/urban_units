@@ -20,7 +20,7 @@ const App = () => {
 // 							{id:'2', company:'Asus',street: 'plac Ratuszowy',no:'13'}];
 
 //dzielenie stringa urban_units
-console.log('trup:', urban_units[620].ULICA);
+
 //tworzenie poprawionej tablicy z obiektami bazy
 var id = [];
 var streets = [];
@@ -30,7 +30,6 @@ var numbers = [];
 for (var key in urban_units) {
     id.push(urban_units[key].ID);
   };
-console.log('id: ', id[10]);
 //tworzenie tablicy z samymi nazwami ulic
 for (var key in urban_units) {
     streets.push(urban_units[key].ULICA);
@@ -38,7 +37,7 @@ for (var key in urban_units) {
 
 for(var i=0; i < streets.length; i++) {
   streets[i] = streets[i].replace(/(?<=([A-ZŻŹĆĄŚĘŁÓŃ][a-zżźćńółęąś]*))((\s\d|\sparzyste|\snieparzyste|\sza wyjątkiem).*)/g, '');
- console.log('test: ', streets[10]);};
+}
 
 //tworzenie tablicy z samymi numerami (bez liter np.1a)
 numbers = urban_units
@@ -66,7 +65,7 @@ function convertRangeToNumbers(str) {
     return (new Array(end - start + 1)).fill(undefined).map((_, i) => i + start);
 }
   //parzyste i nieparzyste z zakresem liczb
- if (str.match(/^parzyste: \d+\-\d+, nieparzyste/g)) {
+ if (str.match(/^parzyste:\s\d+-\d+,\snieparzyste:\s\d+-\d+/g)) {
         var even = str.match(/[\d\-]+(?=,\s)/g);
         var odd = str.match(/\d+\-\d+$/g);
 
@@ -76,7 +75,6 @@ function convertRangeToNumbers(str) {
         var even_e = even_end.map(function(e) { return parseInt(e) });
 
         var odd_start = odd[0].match(/^\d+/g);
-        console.log('odd: ', odd);
         var odd_s = odd_start.map(function(e) { return parseInt(e) })
         var odd_end = odd[0].match(/[\d]+$/g);
         var odd_e = odd_end.map(function(e) { return parseInt(e) })
@@ -99,9 +97,7 @@ function convertRangeToNumbers(str) {
         odds.toString();
         evens.toString();
         var result = evens + ',' + odds;
-
         str = str.replace(/^parzyste.*/g, result);
-        console.log('chuj: ', str);
         var strToNumber = str.split(',').map(Number);
         return strToNumber;
         }
@@ -119,8 +115,7 @@ function convertRangeToNumbers(str) {
         return strToNumber;
     }
 //same liczby po przecinku
-  if (str.match(/^[0-9,]+$/g)) {
-    console.log('nowe: ', str);
+  if (str.match(/^[0-9,\s]+$/g)) {
     var strToNumber = str.split(',').map(Number);
         return strToNumber;
   }
@@ -128,6 +123,7 @@ function convertRangeToNumbers(str) {
   //same parzyste z zakresem
   if (str.match(/^parzyste: \d+\-\d+$/g)) {
     var even = str.match(/\d+\-\d+$/g);
+    console.log('Alert: ', even)
     var even_start = even[0].match(/^\d+/g);
     var even_s = even_start.map(function(e) { return parseInt(e)});
     var even_end = even[0].match(/[\d]+$/g);
@@ -172,12 +168,12 @@ function convertRangeToNumbers(str) {
     }
 
   //parzyste i nieparzyste bez zakresu, tylko po przecinku
-  if (str.match(/^parzyste: \d+,\s.*nieparzyste:\s\d+.*/g)) {
-    str = str.replace(/^\bparzyste:\s\b/g,'').replace(/\bnieparzyste:\s\b/g,'');
+  // if (str.match(/^parzyste: \d+,\s.*nieparzyste:\s\d+.*/g)) {
+  //   str = str.replace(/^\bparzyste:\s\b/g,'').replace(/\bnieparzyste:\s\b/g,'');
 
-        var strToNumber = str.split(',').map(Number);
-        return strToNumber;
-    }
+  //       var strToNumber = str.split(',').map(Number);
+  //       return strToNumber;
+  //   }
   //za wyjątkiem
   if (str.match(/^za wyjątkiem nr/g)) {
       var exception = str.match(/\d.*/g);
@@ -186,9 +182,14 @@ function convertRangeToNumbers(str) {
       var numbers = {no: Number.POSITIVE_INFINITY, exception: exception};
       return numbers;
     }
+
+    else {
+      console.log('Sprawdzam: ', str);
+    }
  }
 //gotowa tablica z numerami
 var fixedNumbers = [];
+
   for(var i=0; i < numbers.length; i++) {
     if (typeof numbers[i] === 'string')
     {
@@ -199,7 +200,7 @@ var fixedNumbers = [];
     }
    };
 
-    return (
+       return (
     <div>
       <p>React here!</p>
     </div>
@@ -209,16 +210,15 @@ var fixedNumbers = [];
 function range(start, end) {
   return (new Array(end - start + 1)).fill(undefined).map((_, i) => i + start);
 }
-var arr = range(1, 18);
+var arr = range(177, 215);
 var arrex = [];
 
 for (var i = 0; i < arr.length; i++) {
   if ((arr[i] % 2) === 1) {
-      arrex.push(arr[i]);
-  }
+      arrex.push(arr[i]);  }
 }
 
-var wynik = arr.join(', ');
+var wynik = arrex.join(', ');
 
 
 console.log('Wynik: ', wynik);
