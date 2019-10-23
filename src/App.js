@@ -3,21 +3,6 @@ import ReactDOM from "react-dom";
 import urban_units from './data/urban_units2'
 
 const App = () => {
-  var units_base = [{company:'IBM',street:'Agrestowa', no:'1'},
-									{company:'Apple',street:'1-Maja',no:'103'},
-									{company:'Asus',street: 'plac Ratuszowy',no:'13'}];
-
-// var urban_units = [
-//                   {id:'1',street: 'ul. 1 Maja 1f-13'},
-// 									{id:'2',street: 'al. gen. Władysława Andersa nieparzyste: 4-14A'},
-//                   {id:'3',street: 'ul. gen. Józefa Kustronia za wyjątkiem nr 92, 93, 99'},
-//                    {id:'4', street: 'Borowików'}
-//                   ];
-
-
-// var newArray = [{id:'1', company:'IBM',street:'Agrestowa', no:'1'},
-// 							{id:'2', company:'Apple',street:'1-Maja',no:'103'},
-// 							{id:'2', company:'Asus',street: 'plac Ratuszowy',no:'13'}];
 
 //dzielenie stringa urban_units
 
@@ -78,9 +63,12 @@ function convertRangeToNumbers(str) {
         var odd_s = odd_start.map(function(e) { return parseInt(e) })
         var odd_end = odd[0].match(/[\d]+$/g);
         var odd_e = odd_end.map(function(e) { return parseInt(e) })
-
+        // if (even_s.length && even_e.lenght && odd_s.length && odd_e.length) {
         var even_result = range(even_s[0], even_e[0]);
         var odd_result = range(odd_s[0], odd_e[0]);
+      // }
+        // else (console.log('zlap: ', str))
+
         //dzielę na zbiory parzyste i nieparzyste
         var evens = [];
         var odds = [];
@@ -100,6 +88,7 @@ function convertRangeToNumbers(str) {
         str = str.replace(/^parzyste.*/g, result);
         var strToNumber = str.split(',').map(Number);
         return strToNumber;
+
         }
 //sam zakres liczb bez podziału na parzyste i nieparzyste
   if (str.match(/^\d+\-\d+/g)) {
@@ -123,7 +112,6 @@ function convertRangeToNumbers(str) {
   //same parzyste z zakresem
   if (str.match(/^parzyste: \d+\-\d+$/g)) {
     var even = str.match(/\d+\-\d+$/g);
-    console.log('Alert: ', even)
     var even_start = even[0].match(/^\d+/g);
     var even_s = even_start.map(function(e) { return parseInt(e)});
     var even_end = even[0].match(/[\d]+$/g);
@@ -186,6 +174,7 @@ function convertRangeToNumbers(str) {
     else {
       console.log('Sprawdzam: ', str);
     }
+
  }
 //gotowa tablica z numerami
 var fixedNumbers = [];
@@ -199,7 +188,12 @@ var fixedNumbers = [];
       fixedNumbers.push(numbers[i])
     }
    };
+console.log('Dupa: ', fixedNumbers);
+console.log('Chuj: ', id);
 
+var fixed_units = id.map(function(id, street, number){ return {id: id, street: streets[street], number: fixedNumbers[number]}; });
+
+console.log(fixed_units);
        return (
     <div>
       <p>React here!</p>
@@ -210,7 +204,7 @@ var fixedNumbers = [];
 function range(start, end) {
   return (new Array(end - start + 1)).fill(undefined).map((_, i) => i + start);
 }
-var arr = range(177, 215);
+var arr = range(34, 89);
 var arrex = [];
 
 for (var i = 0; i < arr.length; i++) {
@@ -218,7 +212,7 @@ for (var i = 0; i < arr.length; i++) {
       arrex.push(arr[i]);  }
 }
 
-var wynik = arrex.join(', ');
+var wynik = arr.join(', ');
 
 
 console.log('Wynik: ', wynik);
