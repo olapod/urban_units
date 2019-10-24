@@ -7,14 +7,9 @@ const App = () => {
 //dzielenie stringa urban_units
 
 //tworzenie poprawionej tablicy z obiektami bazy
-var id = [];
 var streets = [];
 var numbers = [];
 
-//tworze tablicę z id
-for (var key in urban_units) {
-    id.push(urban_units[key].ID);
-  };
 //tworzenie tablicy z samymi nazwami ulic
 for (var key in urban_units) {
     streets.push(urban_units[key].ULICA);
@@ -32,7 +27,7 @@ for(var i=0; i < numbers.length; i++) {
  numbers[i] = numbers[i].match(/(?<=([A-ZŻŹĆĄŚĘŁÓŃ][a-zżźćńółęąś]*\s))((\d|parzyste|nieparzyste|za wyjątkiem).*)/g);
 }
 
-//Przerobienie tablic w tablicy w tablicę ze stringami
+//Przerobienie w tablicę ze stringami i infinity
 for(var i=0; i < numbers.length; i++) {
    if (numbers[i] === null) {
     numbers[i] = Number.POSITIVE_INFINITY;
@@ -155,14 +150,7 @@ function convertRangeToNumbers(str) {
     return strToNumber;
     }
 
-  //parzyste i nieparzyste bez zakresu, tylko po przecinku
-  // if (str.match(/^parzyste: \d+,\s.*nieparzyste:\s\d+.*/g)) {
-  //   str = str.replace(/^\bparzyste:\s\b/g,'').replace(/\bnieparzyste:\s\b/g,'');
-
-  //       var strToNumber = str.split(',').map(Number);
-  //       return strToNumber;
-  //   }
-  //za wyjątkiem
+    //za wyjątkiem
   if (str.match(/^za wyjątkiem nr/g)) {
       var exception = str.match(/\d.*/g);
       exception = exception[0].split(',').map(Number);
@@ -188,10 +176,14 @@ var fixedNumbers = [];
       fixedNumbers.push(numbers[i])
     }
    };
-console.log('Dupa: ', fixedNumbers);
-console.log('Chuj: ', id);
+//GOTOWA BAZA JEDNOSTEK URBANISTYCZNYCH
 
-var fixed_units = id.map(function(id, street, number){ return {id: id, street: streets[street], number: fixedNumbers[number]}; });
+var fixed_units = urban_units.map( ({ DZIELNICA, JEDNOSTKA_URBANISTYCZNA, NR_PAD, ID }) => ({ DZIELNICA, JEDNOSTKA_URBANISTYCZNA, NR_PAD, ID }) );
+
+for(var i=0; i < fixed_units.length; i++) {
+  fixed_units[i].ULICA = streets[i];
+  fixed_units[i].NUMERY = fixedNumbers[i];
+}
 
 console.log(fixed_units);
        return (
