@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import urban_units from './data/urban_units2'
+import urban_units from './data/urban_units2';
+import regon from './data/regon';
 
 const App = () => {
 
@@ -186,6 +187,55 @@ for(var i=0; i < fixed_units.length; i++) {
 }
 
 console.log(fixed_units);
+
+//REGON
+const employees = [{"emp_id":1,"emp_name":"John D","phone":"123456"},{"emp_id":2,"emp_name":"Mary J","phone":"234567"},{"emp_id":3,"emp_name":"Doe J","phone":"345678"},{"emp_id":4,"emp_name":"Jane M","phone":"456789"}];
+const employee_history = [{"emp_id":1,"company":"ABC","Years":4},{"emp_id":2,"company":"BCD","Years":3},{"emp_id":3,"company":"CDE","Years":2},{"emp_id":4,"company":"DEF","Years":1}];
+const cities_lived = [{"emp_id":1,"city":"Moscow","Years":1},{"emp_id":1,"city":"Doha","Years":1},{"emp_id":2,"city":"Cairo","Years":2},{"emp_id":2,"city":"London","Years":1},{"emp_id":3,"city":"Tunis","Years":2},{"emp_id":3,"city":"Beijing","Years":2},{"emp_id":4,"city":"New York","Years":1},{"emp_id":4,"city":"Capetown","Years":1}];
+const whatever = [{ emp_id: 1, whatever: 'whatever' }];//extra to merge item
+
+//merges items with the merger function from toMerge array in uniqueArray
+//  if they match using matcher
+const mergeIn = (uniqueArray, toMerge, matcher, merger) =>
+  uniqueArray.map((item) =>
+    merger(item, toMerge.filter(matcher(item))),
+  );
+//create a merger function set item[itemFieldName] with a mapped result
+//  of others using mapper function
+const merger = (itemFieldName, mapper) => (
+  item,
+  others,
+) => ({
+  ...item,
+  [itemFieldName]: others.map(mapper),
+});
+//match on emp_id
+const matchEpmId = (item) => (other) =>
+  item.emp_id === other.emp_id;
+
+  console.log(
+    [
+      [
+        cities_lived,
+        //merger function that sets item.cities with others mapped to {city,Years}
+        merger('cities', ({ city, Years }) => ({ city, Years}))
+      ],
+      [
+        employee_history,
+        //merger function that sets item.history with others mapped to {company,Years}
+        merger('history', ({ company, Years }) => ({ company, Years}))
+      ],
+      [
+        whatever,//extra to merge items
+        merger('whatever', ({ whatever }) => whatever),
+      ],
+    ].reduce(
+      (result, [other, merger]) =>
+        mergeIn(result, other, matchEpmId, merger),
+      employees,
+    ),
+  );
+
        return (
     <div>
       <p>React here!</p>
