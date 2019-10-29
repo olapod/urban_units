@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import urban_units from './data/urban_units2';
-import regon from './data/regon';
+// import regon from './data/regon';
 
 const App = () => {
 
@@ -10,6 +10,129 @@ const App = () => {
 //tworzenie poprawionej tablicy z obiektami bazy
 var streets = [];
 var numbers = [];
+
+var regon = [
+  // {
+  // "regon": "24172614400020",
+  // "nazwa": "BBA MOPED&SCOOTER ELENA JURCZYK",
+  // "kod poczty": "43300",
+  // "miejscowość poczty": "Bielsko-Biała",
+  // "miejscowość": "Bielsko-Biała",
+  // "ulica": "ul. 1 Maja",
+  // "numer": "24",
+  // "numer lokalu": "",
+  // "nietypowe miejsce likalizacji": "BBA MOPED&SCOOTER ELENA JURCZYK",
+  // "pkd": "4540Z",
+  // "data rozpoczęcia działalności": "2015-04-24",
+  // "ape": "01",
+  // "zakodowana przewidywana liczba pracujących": "A"},
+  // {
+	// 	"regon": "24159810800029",
+	// 	"nazwa": "PPHU STUDIO DOM Małgorzata Białek",
+	// 	"kod poczty": "43300",
+	// 	"miejscowość poczty": "Bielsko-Biała",
+	// 	"miejscowość": "Bielsko-Biała",
+	// 	"ulica": "ul. Bystrzańska",
+	// 	"numer": "29",
+	// 	"numer lokalu": "",
+	// 	"nietypowe miejsce likalizacji": "",
+	// 	"pkd": "4751Z",
+	// 	"data rozpoczęcia działalności": "2018-05-01",
+	// 	"ape": "01",
+	// 	"zakodowana przewidywana liczba pracujących": "A"
+  // },
+  // {
+	// 	"regon": "24364218000027",
+	// 	"nazwa": "BMB Beata Białek",
+	// 	"kod poczty": "43300",
+	// 	"miejscowość poczty": "Bielsko-Biała",
+	// 	"miejscowość": "Bielsko-Biała",
+	// 	"ulica": "ul. Dzwonkowa",
+	// 	"numer": "51",
+	// 	"numer lokalu": "",
+	// 	"nietypowe miejsce likalizacji": "",
+	// 	"pkd": "7022Z",
+	// 	"data rozpoczęcia działalności": "2015-11-01",
+	// 	"ape": "01",
+	// 	"zakodowana przewidywana liczba pracujących": "A"
+  // },
+  {
+		"regon": "01030030300050",
+		"nazwa": "KRAJOWE BIURO WYBORCZE DELEGATURA W BIELSKU BIAŁEJ",
+		"kod poczty": "43300",
+		"miejscowość poczty": "Bielsko-Biała",
+		"miejscowość": "Bielsko-Biała",
+		"ulica": "ul. Piastowska",
+		"numer": "40",
+		"numer lokalu": "",
+		"nietypowe miejsce likalizacji": "",
+		"pkd": "8411Z",
+		"data rozpoczęcia działalności": "1996-01-04",
+		"ape": "01",
+		"zakodowana przewidywana liczba pracujących": "A"
+  },
+  {
+		"regon": "12018331200080",
+		"nazwa": "WANDA KARASIŃSKA KANCELARIA DORADCY PODATKOWEGO",
+		"kod poczty": "43300",
+		"miejscowość poczty": "Bielsko-Biała",
+		"miejscowość": "Bielsko-Biała",
+		"ulica": "ul. Piastowska",
+		"numer": "63A",
+		"numer lokalu": "",
+		"nietypowe miejsce likalizacji": "",
+		"pkd": "6920Z",
+		"data rozpoczęcia działalności": "2018-09-14",
+		"ape": "01",
+		"zakodowana przewidywana liczba pracujących": "A"
+  },
+  {
+		"regon": "24117846400221",
+		"nazwa": "BY DZIUBEKA TOMASZ DZIUBEK",
+		"kod poczty": "43300",
+		"miejscowość poczty": "Bielsko-Biała",
+		"miejscowość": "Bielsko-Biała",
+		"ulica": "al. Armii Krajowej",
+		"numer": "92",
+		"numer lokalu": "",
+		"nietypowe miejsce likalizacji": "",
+		"pkd": "4777Z",
+		"data rozpoczęcia działalności": "2017-07-01",
+		"ape": "01",
+		"zakodowana przewidywana liczba pracujących": "A"
+  },
+  {
+		"regon": "27359693000023",
+		"nazwa": "DUO",
+		"kod poczty": "43300",
+		"miejscowość poczty": "Bielsko-Biała",
+		"miejscowość": "Bielsko-Biała",
+		"ulica": "ul. Sarni Stok",
+		"numer": "2",
+		"numer lokalu": "",
+		"nietypowe miejsce likalizacji": "",
+		"pkd": "4777Z",
+		"data rozpoczęcia działalności": "2005-10-21",
+		"ape": "01",
+		"zakodowana przewidywana liczba pracujących": "A"
+	},
+	{
+		"regon": "24187719100045",
+		"nazwa": "FIRMA HANDLOWA EWELINA STUDNICKA",
+		"kod poczty": "43300",
+		"miejscowość poczty": "Bielsko-Biała",
+		"miejscowość": "Bielsko-Biała",
+		"ulica": "ul. Sarni Stok",
+		"numer": "92",
+		"numer lokalu": "",
+		"nietypowe miejsce likalizacji": "",
+		"pkd": "4761Z",
+		"data rozpoczęcia działalności": "2013-09-01",
+		"ape": "01",
+		"zakodowana przewidywana liczba pracujących": "A"
+	}
+];
+
 
 //tworzenie tablicy z samymi nazwami ulic
 for (var key in urban_units) {
@@ -185,56 +308,39 @@ for(var i=0; i < fixed_units.length; i++) {
   fixed_units[i].ULICA = streets[i];
   fixed_units[i].NUMERY = fixedNumbers[i];
 }
-
-console.log(fixed_units);
+// console.log(fixed_units)
 
 //REGON
-const employees = [{"emp_id":1,"emp_name":"John D","phone":"123456"},{"emp_id":2,"emp_name":"Mary J","phone":"234567"},{"emp_id":3,"emp_name":"Doe J","phone":"345678"},{"emp_id":4,"emp_name":"Jane M","phone":"456789"}];
-const employee_history = [{"emp_id":1,"company":"ABC","Years":4},{"emp_id":2,"company":"BCD","Years":3},{"emp_id":3,"company":"CDE","Years":2},{"emp_id":4,"company":"DEF","Years":1}];
-const cities_lived = [{"emp_id":1,"city":"Moscow","Years":1},{"emp_id":1,"city":"Doha","Years":1},{"emp_id":2,"city":"Cairo","Years":2},{"emp_id":2,"city":"London","Years":1},{"emp_id":3,"city":"Tunis","Years":2},{"emp_id":3,"city":"Beijing","Years":2},{"emp_id":4,"city":"New York","Years":1},{"emp_id":4,"city":"Capetown","Years":1}];
-const whatever = [{ emp_id: 1, whatever: 'whatever' }];//extra to merge item
+//przygotowanie danych do porównania
+//zamiana stringa z numerem na numer
+for (var i = 0; i < regon.length; i++) {
+  regon[i].numer = regon[i].numer.match(/^\d+/gi);
+  regon[i].numer = parseInt(regon[i].numer);
 
-//merges items with the merger function from toMerge array in uniqueArray
-//  if they match using matcher
-const mergeIn = (uniqueArray, toMerge, matcher, merger) =>
-  uniqueArray.map((item) =>
-    merger(item, toMerge.filter(matcher(item))),
-  );
-//create a merger function set item[itemFieldName] with a mapped result
-//  of others using mapper function
-const merger = (itemFieldName, mapper) => (
-  item,
-  others,
-) => ({
-  ...item,
-  [itemFieldName]: others.map(mapper),
-});
-//match on emp_id
-const matchEpmId = (item) => (other) =>
-  item.emp_id === other.emp_id;
+}
+// console.log(regon[3]);
 
-  console.log(
-    [
-      [
-        cities_lived,
-        //merger function that sets item.cities with others mapped to {city,Years}
-        merger('cities', ({ city, Years }) => ({ city, Years}))
-      ],
-      [
-        employee_history,
-        //merger function that sets item.history with others mapped to {company,Years}
-        merger('history', ({ company, Years }) => ({ company, Years}))
-      ],
-      [
-        whatever,//extra to merge items
-        merger('whatever', ({ whatever }) => whatever),
-      ],
-    ].reduce(
-      (result, [other, merger]) =>
-        mergeIn(result, other, matchEpmId, merger),
-      employees,
-    ),
-  );
+
+for (var i = 0; i < fixed_units.length; i++) {
+
+  for (var k = 0; k < regon.length; k++) {
+    if (fixed_units[i].ULICA === regon[k].ulica && (fixed_units[i].NUMERY === Infinity || fixed_units[i].NUMERY.includes(regon[k].numer) || (fixed_units[i].NUMERY[0] === Infinity && !fixed_units[i].NUMERY[1].includes(regon[k].numer)))) {
+      console.log('co: ', fixed_units[i].ULICA, regon[k].ulica, fixed_units[i].NUMERY, regon[k].numer, 'jednostka: ', fixed_units[i].JEDNOSTKA_URBANISTYCZNA);
+      regon[k].jednostka = fixed_units[i].JEDNOSTKA_URBANISTYCZNA;
+      break;
+    }
+
+  }
+}
+console.log('Test: ', regon);
+
+
+// for (var i = 0; i < fixed_units.length; i++) {
+// if (fixed_units[i].ULICA === regon[2].ulica && (fixed_units[i].NUMERY === Infinity || fixed_units[i].NUMERY.includes(regon[2].numer) || (fixed_units[i].NUMERY[0] === Infinity && !fixed_units[i].NUMERY[1].includes(regon[2].numer)))) {
+//   regon[2].jednostka = fixed_units[i].JEDNOSTKA_URBANISTYCZNA;
+//   console.log('Test: ', fixed_units[i], 'regon: ', regon[2])
+// }
+// }
 
        return (
     <div>
@@ -243,21 +349,21 @@ const matchEpmId = (item) => (other) =>
   );
 };
 
-function range(start, end) {
-  return (new Array(end - start + 1)).fill(undefined).map((_, i) => i + start);
-}
-var arr = range(34, 89);
-var arrex = [];
+// function range(start, end) {
+//   return (new Array(end - start + 1)).fill(undefined).map((_, i) => i + start);
+// }
+// var arr = range(34, 89);
+// var arrex = [];
 
-for (var i = 0; i < arr.length; i++) {
-  if ((arr[i] % 2) === 1) {
-      arrex.push(arr[i]);  }
-}
+// for (var i = 0; i < arr.length; i++) {
+//   if ((arr[i] % 2) === 1) {
+//       arrex.push(arr[i]);  }
+// }
 
-var wynik = arr.join(', ');
+// var wynik = arr.join(', ');
 
 
-console.log('Wynik: ', wynik);
+// console.log('Wynik: ', wynik);
 
 export default App;
 ReactDOM.render(<App />, document.getElementById("app"));
