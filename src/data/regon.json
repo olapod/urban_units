@@ -47781,7 +47781,7 @@
 		"miejscowość poczty": "Bielsko-Biała",
 		"miejscowość": "Bielsko-Biała",
 		"ulica": "ul. Stanisława Mikołajczyka",
-		"numer": "41 ",
+		"numer": "41",
 		"numer lokalu": "",
 		"nietypowe miejsce likalizacji": "",
 		"pkd": "9499Z",
@@ -60568,8 +60568,5 @@
 		"data rozpoczęcia działalności": "2017-03-09",
 		"ape": "01",
 		"zakodowana przewidywana liczba pracujących": "A"
-	},
-	{
-		"regon": ""
 	}
 ]

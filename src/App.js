@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import urban_units from './data/urban_units2';
-// import regon from './data/regon';
+import regon from './data/regon';
 
 const App = () => {
 
@@ -11,127 +11,127 @@ const App = () => {
 var streets = [];
 var numbers = [];
 
-var regon = [
-  // {
-  // "regon": "24172614400020",
-  // "nazwa": "BBA MOPED&SCOOTER ELENA JURCZYK",
-  // "kod poczty": "43300",
-  // "miejscowość poczty": "Bielsko-Biała",
-  // "miejscowość": "Bielsko-Biała",
-  // "ulica": "ul. 1 Maja",
-  // "numer": "24",
-  // "numer lokalu": "",
-  // "nietypowe miejsce likalizacji": "BBA MOPED&SCOOTER ELENA JURCZYK",
-  // "pkd": "4540Z",
-  // "data rozpoczęcia działalności": "2015-04-24",
-  // "ape": "01",
-  // "zakodowana przewidywana liczba pracujących": "A"},
-  // {
-	// 	"regon": "24159810800029",
-	// 	"nazwa": "PPHU STUDIO DOM Małgorzata Białek",
-	// 	"kod poczty": "43300",
-	// 	"miejscowość poczty": "Bielsko-Biała",
-	// 	"miejscowość": "Bielsko-Biała",
-	// 	"ulica": "ul. Bystrzańska",
-	// 	"numer": "29",
-	// 	"numer lokalu": "",
-	// 	"nietypowe miejsce likalizacji": "",
-	// 	"pkd": "4751Z",
-	// 	"data rozpoczęcia działalności": "2018-05-01",
-	// 	"ape": "01",
-	// 	"zakodowana przewidywana liczba pracujących": "A"
-  // },
-  // {
-	// 	"regon": "24364218000027",
-	// 	"nazwa": "BMB Beata Białek",
-	// 	"kod poczty": "43300",
-	// 	"miejscowość poczty": "Bielsko-Biała",
-	// 	"miejscowość": "Bielsko-Biała",
-	// 	"ulica": "ul. Dzwonkowa",
-	// 	"numer": "51",
-	// 	"numer lokalu": "",
-	// 	"nietypowe miejsce likalizacji": "",
-	// 	"pkd": "7022Z",
-	// 	"data rozpoczęcia działalności": "2015-11-01",
-	// 	"ape": "01",
-	// 	"zakodowana przewidywana liczba pracujących": "A"
-  // },
-  {
-		"regon": "01030030300050",
-		"nazwa": "KRAJOWE BIURO WYBORCZE DELEGATURA W BIELSKU BIAŁEJ",
-		"kod poczty": "43300",
-		"miejscowość poczty": "Bielsko-Biała",
-		"miejscowość": "Bielsko-Biała",
-		"ulica": "ul. Piastowska",
-		"numer": "40",
-		"numer lokalu": "",
-		"nietypowe miejsce likalizacji": "",
-		"pkd": "8411Z",
-		"data rozpoczęcia działalności": "1996-01-04",
-		"ape": "01",
-		"zakodowana przewidywana liczba pracujących": "A"
-  },
-  {
-		"regon": "12018331200080",
-		"nazwa": "WANDA KARASIŃSKA KANCELARIA DORADCY PODATKOWEGO",
-		"kod poczty": "43300",
-		"miejscowość poczty": "Bielsko-Biała",
-		"miejscowość": "Bielsko-Biała",
-		"ulica": "ul. Piastowska",
-		"numer": "63A",
-		"numer lokalu": "",
-		"nietypowe miejsce likalizacji": "",
-		"pkd": "6920Z",
-		"data rozpoczęcia działalności": "2018-09-14",
-		"ape": "01",
-		"zakodowana przewidywana liczba pracujących": "A"
-  },
-  {
-		"regon": "24117846400221",
-		"nazwa": "BY DZIUBEKA TOMASZ DZIUBEK",
-		"kod poczty": "43300",
-		"miejscowość poczty": "Bielsko-Biała",
-		"miejscowość": "Bielsko-Biała",
-		"ulica": "al. Armii Krajowej",
-		"numer": "92",
-		"numer lokalu": "",
-		"nietypowe miejsce likalizacji": "",
-		"pkd": "4777Z",
-		"data rozpoczęcia działalności": "2017-07-01",
-		"ape": "01",
-		"zakodowana przewidywana liczba pracujących": "A"
-  },
-  {
-		"regon": "27359693000023",
-		"nazwa": "DUO",
-		"kod poczty": "43300",
-		"miejscowość poczty": "Bielsko-Biała",
-		"miejscowość": "Bielsko-Biała",
-		"ulica": "ul. Sarni Stok",
-		"numer": "2",
-		"numer lokalu": "",
-		"nietypowe miejsce likalizacji": "",
-		"pkd": "4777Z",
-		"data rozpoczęcia działalności": "2005-10-21",
-		"ape": "01",
-		"zakodowana przewidywana liczba pracujących": "A"
-	},
-	{
-		"regon": "24187719100045",
-		"nazwa": "FIRMA HANDLOWA EWELINA STUDNICKA",
-		"kod poczty": "43300",
-		"miejscowość poczty": "Bielsko-Biała",
-		"miejscowość": "Bielsko-Biała",
-		"ulica": "ul. Sarni Stok",
-		"numer": "92",
-		"numer lokalu": "",
-		"nietypowe miejsce likalizacji": "",
-		"pkd": "4761Z",
-		"data rozpoczęcia działalności": "2013-09-01",
-		"ape": "01",
-		"zakodowana przewidywana liczba pracujących": "A"
-	}
-];
+// var regon = [
+//   {
+//   "regon": "24172614400020",
+//   "nazwa": "BBA MOPED&SCOOTER ELENA JURCZYK",
+//   "kod poczty": "43300",
+//   "miejscowość poczty": "Bielsko-Biała",
+//   "miejscowość": "Bielsko-Biała",
+//   "ulica": "ul. 1 Maja",
+//   "numer": "24",
+//   "numer lokalu": "",
+//   "nietypowe miejsce likalizacji": "BBA MOPED&SCOOTER ELENA JURCZYK",
+//   "pkd": "4540Z",
+//   "data rozpoczęcia działalności": "2015-04-24",
+//   "ape": "01",
+//   "zakodowana przewidywana liczba pracujących": "A"},
+//   {
+// 		"regon": "24159810800029",
+// 		"nazwa": "PPHU STUDIO DOM Małgorzata Białek",
+// 		"kod poczty": "43300",
+// 		"miejscowość poczty": "Bielsko-Biała",
+// 		"miejscowość": "Bielsko-Biała",
+// 		"ulica": "ul. Bystrzańska",
+// 		"numer": "29",
+// 		"numer lokalu": "",
+// 		"nietypowe miejsce likalizacji": "",
+// 		"pkd": "4751Z",
+// 		"data rozpoczęcia działalności": "2018-05-01",
+// 		"ape": "01",
+// 		"zakodowana przewidywana liczba pracujących": "A"
+//   },
+//   {
+// 		"regon": "24364218000027",
+// 		"nazwa": "BMB Beata Białek",
+// 		"kod poczty": "43300",
+// 		"miejscowość poczty": "Bielsko-Biała",
+// 		"miejscowość": "Bielsko-Biała",
+// 		"ulica": "ul. Dzwonkowa",
+// 		"numer": "51",
+// 		"numer lokalu": "",
+// 		"nietypowe miejsce likalizacji": "",
+// 		"pkd": "7022Z",
+// 		"data rozpoczęcia działalności": "2015-11-01",
+// 		"ape": "01",
+// 		"zakodowana przewidywana liczba pracujących": "A"
+//   },
+//   {
+// 		"regon": "01030030300050",
+// 		"nazwa": "KRAJOWE BIURO WYBORCZE DELEGATURA W BIELSKU BIAŁEJ",
+// 		"kod poczty": "43300",
+// 		"miejscowość poczty": "Bielsko-Biała",
+// 		"miejscowość": "Bielsko-Biała",
+// 		"ulica": "ul. Piastowska",
+// 		"numer": "40",
+// 		"numer lokalu": "",
+// 		"nietypowe miejsce likalizacji": "",
+// 		"pkd": "8411Z",
+// 		"data rozpoczęcia działalności": "1996-01-04",
+// 		"ape": "01",
+// 		"zakodowana przewidywana liczba pracujących": "A"
+//   },
+//   {
+// 		"regon": "12018331200080",
+// 		"nazwa": "WANDA KARASIŃSKA KANCELARIA DORADCY PODATKOWEGO",
+// 		"kod poczty": "43300",
+// 		"miejscowość poczty": "Bielsko-Biała",
+// 		"miejscowość": "Bielsko-Biała",
+// 		"ulica": "ul. Piastowska",
+// 		"numer": "63A",
+// 		"numer lokalu": "",
+// 		"nietypowe miejsce likalizacji": "",
+// 		"pkd": "6920Z",
+// 		"data rozpoczęcia działalności": "2018-09-14",
+// 		"ape": "01",
+// 		"zakodowana przewidywana liczba pracujących": "A"
+//   },
+//   {
+// 		"regon": "24117846400221",
+// 		"nazwa": "BY DZIUBEKA TOMASZ DZIUBEK",
+// 		"kod poczty": "43300",
+// 		"miejscowość poczty": "Bielsko-Biała",
+// 		"miejscowość": "Bielsko-Biała",
+// 		"ulica": "ul. gen. Józefa Kustronia",
+// 		"numer": "15",
+// 		"numer lokalu": "",
+// 		"nietypowe miejsce likalizacji": "",
+// 		"pkd": "4777Z",
+// 		"data rozpoczęcia działalności": "2017-07-01",
+// 		"ape": "01",
+// 		"zakodowana przewidywana liczba pracujących": "A"
+//   },
+//   {
+// 		"regon": "27359693000023",
+// 		"nazwa": "DUO",
+// 		"kod poczty": "43300",
+// 		"miejscowość poczty": "Bielsko-Biała",
+// 		"miejscowość": "Bielsko-Biała",
+// 		"ulica": "al. Armii Krajowej",
+// 		"numer": "88",
+// 		"numer lokalu": "",
+// 		"nietypowe miejsce likalizacji": "",
+// 		"pkd": "4777Z",
+// 		"data rozpoczęcia działalności": "2005-10-21",
+// 		"ape": "01",
+// 		"zakodowana przewidywana liczba pracujących": "A"
+// 	},
+// 	{
+// 		"regon": "24187719100045",
+// 		"nazwa": "FIRMA HANDLOWA EWELINA STUDNICKA",
+// 		"kod poczty": "43300",
+// 		"miejscowość poczty": "Bielsko-Biała",
+// 		"miejscowość": "Bielsko-Biała",
+// 		"ulica": "ul. Saperów",
+// 		"numer": "82",
+// 		"numer lokalu": "",
+// 		"nietypowe miejsce likalizacji": "",
+// 		"pkd": "4761Z",
+// 		"data rozpoczęcia działalności": "2013-09-01",
+// 		"ape": "01",
+// 		"zakodowana przewidywana liczba pracujących": "A"
+// 	}
+// ];
 
 
 //tworzenie tablicy z samymi nazwami ulic
@@ -314,31 +314,50 @@ for(var i=0; i < fixed_units.length; i++) {
 //przygotowanie danych do porównania
 //zamiana stringa z numerem na numer
 for (var i = 0; i < regon.length; i++) {
+   if (regon[i].numer.match(/^\d+/gi)) {
   regon[i].numer = regon[i].numer.match(/^\d+/gi);
   regon[i].numer = parseInt(regon[i].numer);
-
+  }
 }
-// console.log(regon[3]);
-
 
 for (var i = 0; i < fixed_units.length; i++) {
 
   for (var k = 0; k < regon.length; k++) {
-    if (fixed_units[i].ULICA === regon[k].ulica && (fixed_units[i].NUMERY === Infinity || fixed_units[i].NUMERY.includes(regon[k].numer) || (fixed_units[i].NUMERY[0] === Infinity && !fixed_units[i].NUMERY[1].includes(regon[k].numer)))) {
-      console.log('co: ', fixed_units[i].ULICA, regon[k].ulica, fixed_units[i].NUMERY, regon[k].numer, 'jednostka: ', fixed_units[i].JEDNOSTKA_URBANISTYCZNA);
+    if (fixed_units[i].ULICA === regon[k].ulica && fixed_units[i].NUMERY === Infinity) {
+      // console.log('co1: ', fixed_units[i].ULICA, regon[k].ulica, fixed_units[i].NUMERY, regon[k].numer, 'jednostka: ', fixed_units[i].JEDNOSTKA_URBANISTYCZNA);
       regon[k].jednostka = fixed_units[i].JEDNOSTKA_URBANISTYCZNA;
-      break;
+
     }
+
+    if (fixed_units[i].ULICA === regon[k].ulica && Array.isArray(fixed_units[i].NUMERY) && fixed_units[i].NUMERY.includes(regon[k].numer)) {
+      regon[k].jednostka = fixed_units[i].JEDNOSTKA_URBANISTYCZNA;
+      // console.log('co2: ', fixed_units[i].ULICA, regon[k].ulica, fixed_units[i].NUMERY, regon[k].numer, 'jednostka: ', fixed_units[i].JEDNOSTKA_URBANISTYCZNA);
+
+    }
+
+    if (fixed_units[i].ULICA === regon[k].ulica &&  typeof fixed_units[i].NUMERY === 'object' && fixed_units[i].NUMERY.no === Infinity && !fixed_units[i].NUMERY.exception.includes(regon[k].numer)) {
+    regon[k].jednostka = fixed_units[i].JEDNOSTKA_URBANISTYCZNA;
+    // console.log('co3: ', fixed_units[i].ULICA, regon[k].ulica, fixed_units[i].NUMERY, regon[k].numer, 'jednostka: ', fixed_units[i].JEDNOSTKA_URBANISTYCZNA);
+
+  }
+ }
+}
+// console.log('Wynik: ', regon);
+var lack = [];
+for (var i = 0; i < regon.length; i++) {
+  if (!regon[i].jednostka) {
+
+    lack.push(...regon[i]);
 
   }
 }
-console.log('Test: ', regon);
+console.log('Adresy bez jednostki: ', lack)
 
 
 // for (var i = 0; i < fixed_units.length; i++) {
 // if (fixed_units[i].ULICA === regon[2].ulica && (fixed_units[i].NUMERY === Infinity || fixed_units[i].NUMERY.includes(regon[2].numer) || (fixed_units[i].NUMERY[0] === Infinity && !fixed_units[i].NUMERY[1].includes(regon[2].numer)))) {
 //   regon[2].jednostka = fixed_units[i].JEDNOSTKA_URBANISTYCZNA;
-//   console.log('Test: ', fixed_units[i], 'regon: ', regon[2])
+//   console.log('Test2: ', fixed_units[i], 'regon: ', regon[2])
 // }
 // }
 
@@ -348,7 +367,6 @@ console.log('Test: ', regon);
     </div>
   );
 };
-
 // function range(start, end) {
 //   return (new Array(end - start + 1)).fill(undefined).map((_, i) => i + start);
 // }
