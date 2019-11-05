@@ -65,42 +65,42 @@
  {
    "DZIELNICA": "GÓRNE PRZEDMIEŚCIE",
    "JEDNOSTKA_URBANISTYCZNA": 9,
-   "ULICA": "pl. Marcina Lutra",
+   "ULICA": "Plac Marcina Lutra",
    "NR_PAD": "200049493",
    "ID": 110
  },
  {
    "DZIELNICA": "KOMOROWICE KRAKOWSKIE",
    "JEDNOSTKA_URBANISTYCZNA": 67,
-   "ULICA": "pl. Józefa Niemczyka",
+   "ULICA": "Plac Józefa Niemczyka",
    "NR_PAD": "200049492",
    "ID": 1008
  },
  {
    "DZIELNICA": "STARE MIASTO",
    "JEDNOSTKA_URBANISTYCZNA": 1,
-   "ULICA": "pl. Rynek",
+   "ULICA": "Plac Rynek",
    "NR_PAD": "200049525",
    "ID": 7
  },
  {
    "DZIELNICA": "STARE MIASTO",
    "JEDNOSTKA_URBANISTYCZNA": 1,
-   "ULICA": "pl. św. Mikołaja",
+   "ULICA": "Plac św. Mikołaja",
    "NR_PAD": "200049477",
    "ID": 16
  },
  {
    "DZIELNICA": "STARE BIELSKO",
    "JEDNOSTKA_URBANISTYCZNA": 60,
-   "ULICA": "pl. Zwycięstwa",
+   "ULICA": "Plac Zwycięstwa",
    "NR_PAD": "200049499",
    "ID": 796
  },
  {
    "DZIELNICA": "ŚRÓDMIEŚCIE BIELSKO",
    "JEDNOSTKA_URBANISTYCZNA": 4,
-   "ULICA": "pl. Żwirki i Wigury",
+   "ULICA": "Plac Żwirki i Wigury",
    "NR_PAD": "200049502",
    "ID": 52
  },
@@ -380,7 +380,7 @@
  {
    "DZIELNICA": "ALEKSANDROWICE",
    "JEDNOSTKA_URBANISTYCZNA": 23,
-   "ULICA": "ul. Altanowa ",
+   "ULICA": "ul. Altanowa",
    "NR_PAD": "2466290",
    "ID": 286
  },
@@ -527,7 +527,7 @@
  {
    "DZIELNICA": "ALEKSANDROWICE",
    "JEDNOSTKA_URBANISTYCZNA": 22,
-   "ULICA": "ul. Babiogórska ",
+   "ULICA": "ul. Babiogórska",
    "NR_PAD": "2466306",
    "ID": 257
  },
@@ -604,7 +604,7 @@
  {
    "DZIELNICA": "ALEKSANDROWICE",
    "JEDNOSTKA_URBANISTYCZNA": 23,
-   "ULICA": "ul. Barwna ",
+   "ULICA": "ul. Barwna",
    "NR_PAD": "2466935",
    "ID": 285
  },
@@ -856,14 +856,14 @@
  {
    "DZIELNICA": "BIAŁA KRAKOWSKA",
    "JEDNOSTKA_URBANISTYCZNA": 34,
-   "ULICA": "ul. Bohaterów Westerplatte 1-19",
+   "ULICA": "ul. Bohaterów WesterPlactte 1-19",
    "NR_PAD": "2466682",
    "ID": 432
  },
  {
    "DZIELNICA": "BIAŁA KRAKOWSKA",
    "JEDNOSTKA_URBANISTYCZNA": 33,
-   "ULICA": "ul. Bohaterów Westerplatte parzyste: 24-46, nieparzyste: 19-49",
+   "ULICA": "ul. Bohaterów WesterPlactte parzyste: 24-46, nieparzyste: 19-49",
    "NR_PAD": "2466682",
    "ID": 419
  },
@@ -1367,7 +1367,7 @@
  {
    "DZIELNICA": "KAMIENICA",
    "JEDNOSTKA_URBANISTYCZNA": 48,
-   "ULICA": "ul. Czapli",
+   "ULICA": "ul. CzaPlac",
    "NR_PAD": "2466838",
    "ID": 586
  },
@@ -1458,7 +1458,7 @@
  {
    "DZIELNICA": "OSIEDLE WOJSKA POLSKIEGO",
    "JEDNOSTKA_URBANISTYCZNA": 26,
-   "ULICA": "ul. Czwartaków ",
+   "ULICA": "ul. Czwartaków",
    "NR_PAD": "2466545",
    "ID": 306
  },
@@ -1850,14 +1850,14 @@
  {
    "DZIELNICA": "GÓRNE PRZEDMIEŚCIE",
    "JEDNOSTKA_URBANISTYCZNA": 8,
-   "ULICA": "ul. Emilii Plater 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20",
+   "ULICA": "ul. Emilii Placter 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20",
    "NR_PAD": "2466195",
    "ID": 90
  },
  {
    "DZIELNICA": "OSIEDLE PIASTOWSKIE",
    "JEDNOSTKA_URBANISTYCZNA": 28,
-   "ULICA": "ul. Emilii Plater nieparzyste: 19-23",
+   "ULICA": "ul. Emilii Placter nieparzyste: 19-23",
    "NR_PAD": "2466195",
    "ID": 331
  },
@@ -2039,7 +2039,7 @@
  {
    "DZIELNICA": "GÓRNE PRZEDMIEŚCIE",
    "JEDNOSTKA_URBANISTYCZNA": 7,
-   "ULICA": "ul. gen Kazimierza Pułaskiego",
+   "ULICA": "ul. gen. Kazimierza Pułaskiego",
    "NR_PAD": "200049233",
    "ID": 82
  },
@@ -2053,7 +2053,7 @@
  {
    "DZIELNICA": "BIAŁA WSCHÓD",
    "JEDNOSTKA_URBANISTYCZNA": 12,
-   "ULICA": "ul. gen. Boruty-Spiechowicza",
+   "ULICA": "ul. gen. Mieczysława Boruty-Spiechowicza",
    "NR_PAD": "2466212",
    "ID": 171
  },
@@ -2459,7 +2459,7 @@
  {
    "DZIELNICA": "OSIEDLE SŁONECZNE",
    "JEDNOSTKA_URBANISTYCZNA": 5,
-   "ULICA": "ul. Grottgera",
+   "ULICA": "ul. Artura Grottgera",
    "NR_PAD": "200049257",
    "ID": 58
  },
@@ -2823,7 +2823,7 @@
  {
    "DZIELNICA": "WAPIENICA",
    "JEDNOSTKA_URBANISTYCZNA": 57,
-   "ULICA": "ul. Jacka Soplicy",
+   "ULICA": "ul. Jacka SoPlacy",
    "NR_PAD": "2466168",
    "ID": 734
  },
@@ -2998,35 +2998,35 @@
  {
    "DZIELNICA": "GÓRNE PRZEDMIEŚCIE",
    "JEDNOSTKA_URBANISTYCZNA": 7,
-   "ULICA": "ul. Jana Sobieskiego 3-68, 73,75",
+   "ULICA": "ul. Jana III Sobieskiego 3-68, 73,75",
    "NR_PAD": "200062359",
    "ID": 77
  },
  {
    "DZIELNICA": "GÓRNE PRZEDMIEŚCIE",
    "JEDNOSTKA_URBANISTYCZNA": 8,
-   "ULICA": "ul. Jana Sobieskiego 70, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 91",
+   "ULICA": "ul. Jana III Sobieskiego 70, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 91",
    "NR_PAD": "200062359",
    "ID": 83
  },
  {
    "DZIELNICA": "OSIEDLE PIASTOWSKIE",
    "JEDNOSTKA_URBANISTYCZNA": 28,
-   "ULICA": "ul. Jana Sobieskiego parzyste: 90-132, nieparzyste: 23A-105",
+   "ULICA": "ul. Jana III Sobieskiego parzyste: 90-132, nieparzyste: 23A-105",
    "NR_PAD": "200062359",
    "ID": 335
  },
  {
    "DZIELNICA": "STARE BIELSKO",
    "JEDNOSTKA_URBANISTYCZNA": 60,
-   "ULICA": "ul. Jana Sobieskiego parzyste: 140-425, nieparzyste: 169-415C",
+   "ULICA": "ul. Jana III Sobieskiego parzyste: 140-425, nieparzyste: 169-415C",
    "NR_PAD": "200062359",
    "ID": 805
  },
  {
    "DZIELNICA": "WAPIENICA",
    "JEDNOSTKA_URBANISTYCZNA": 59,
-   "ULICA": "ul. Jana Sobieskiego parzyste: 432-462, nieparzyste: 431-443",
+   "ULICA": "ul. Jana III Sobieskiego parzyste: 432-462, nieparzyste: 431-443",
    "NR_PAD": "200062359",
    "ID": 780
  },
@@ -3194,7 +3194,7 @@
  {
    "DZIELNICA": "OSIEDLE KOPERNIKA",
    "JEDNOSTKA_URBANISTYCZNA": 27,
-   "ULICA": "ul. Jesionowa ",
+   "ULICA": "ul. Jesionowa",
    "NR_PAD": "2466884",
    "ID": 321
  },
@@ -4104,7 +4104,7 @@
  {
    "DZIELNICA": "DOLNE PRZEDMIEŚCIE",
    "JEDNOSTKA_URBANISTYCZNA": 10,
-   "ULICA": "ul. kpt. Henryka Boryczki ",
+   "ULICA": "ul. kpt. Henryka Boryczki",
    "NR_PAD": "2467070",
    "ID": 124
  },
@@ -5189,7 +5189,7 @@
  {
    "DZIELNICA": "WAPIENICA",
    "JEDNOSTKA_URBANISTYCZNA": 59,
-   "ULICA": "ul. Mielnickiego",
+   "ULICA": "ul. Stanisława Mielnickiego",
    "NR_PAD": "2466377",
    "ID": 790
  },
@@ -5728,7 +5728,7 @@
  {
    "DZIELNICA": "DOLNE PRZEDMIEŚCIE",
    "JEDNOSTKA_URBANISTYCZNA": 11,
-   "ULICA": "ul. Okrzei",
+   "ULICA": "ul. Stefana Okrzei",
    "NR_PAD": "2466933",
    "ID": 142
  },
@@ -6253,21 +6253,21 @@
  {
    "DZIELNICA": "LIPNIK",
    "JEDNOSTKA_URBANISTYCZNA": 79,
-   "ULICA": "ul. Plastyków",
+   "ULICA": "ul. Placstyków",
    "NR_PAD": "2467223",
    "ID": 1214
  },
  {
    "DZIELNICA": "LIPNIK",
    "JEDNOSTKA_URBANISTYCZNA": 79,
-   "ULICA": "ul. Platynowa",
+   "ULICA": "ul. Plactynowa",
    "NR_PAD": "2467003",
    "ID": 1211
  },
  {
    "DZIELNICA": "STRACONKA",
    "JEDNOSTKA_URBANISTYCZNA": 81,
-   "ULICA": "ul. Pliszek",
+   "ULICA": "ul. Placszek",
    "NR_PAD": "2466598",
    "ID": 1253
  },
@@ -7905,7 +7905,7 @@
  {
    "DZIELNICA": "BIAŁA WSCHÓD",
    "JEDNOSTKA_URBANISTYCZNA": 13,
-   "ULICA": "ul. Szkolna ",
+   "ULICA": "ul. Szkolna",
    "NR_PAD": "2467228",
    "ID": 175
  },
@@ -8752,7 +8752,7 @@
 {
   "DZIELNICA": "ŚRÓDMIEŚCIE BIELSKO",
   "JEDNOSTKA_URBANISTYCZNA": 3,
-  "ULICA": "ul. Wilsona",
+  "ULICA": "ul. Thomasa W. Wilsona",
   "NR_PAD": "200049537",
   "ID": 35
 },

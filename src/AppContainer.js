@@ -1,6 +1,7 @@
 import urban_units from './data/urban_units2';
 import regon from './data/regon_full';
 
+
 //dzielenie stringa urban_units
 
 //tworzenie poprawionej tablicy z obiektami bazy
@@ -34,7 +35,6 @@ for(var i=0; i < numbers.length; i++) {
    else {
     numbers[i] = numbers[i].join();
    }
-
 };
 
 //Funkcja konwersji stringa z zakresu numerów na same numery
@@ -182,6 +182,7 @@ var fixed_units = urban_units.map( ({ DZIELNICA, JEDNOSTKA_URBANISTYCZNA, NR_PAD
 for(var i=0; i < fixed_units.length; i++) {
   fixed_units[i].ULICA = streets[i];
   fixed_units[i].NUMERY = fixedNumbers[i];
+  fixed_units[i].ULICA.trim(); 
 }
 // console.log(fixed_units)
 
@@ -192,12 +193,14 @@ for (var i = 0; i < regon.length; i++) {
    if (regon[i].numer && regon[i].numer.match(/^\d+/gi)) {
   regon[i].numer = regon[i].numer.match(/^\d+/gi);
    regon[i].numer = parseInt(regon[i].numer);
-  }
+  }  
+  if (!regon[i].ulica === null)
+     regon[i].ulica.trim();    
 }
 
-for (var i = 0; i < fixed_units.length; i++) {
+for (var k = 0; k < regon.length; k++) {
 
-  for (var k = 0; k < regon.length; k++) {
+  for (var i = 0; i < fixed_units.length; i++) {
     if (fixed_units[i].ULICA === regon[k].ulica && fixed_units[i].NUMERY === Infinity) {
 
       regon[k].jednostka = fixed_units[i].JEDNOSTKA_URBANISTYCZNA;
@@ -225,6 +228,9 @@ for (var i = 0; i < regon.length; i++) {
   if (!regon[i].jednostka) {
     lack.push(regon[i]);
   }
+  if (regon[i].ulica === 'Plac Wolności') {
+    console.log('Na ulicy: ', regon[i])
+  }
 }
 console.log('Adresy bez jednostki: ', lack.length);
 
@@ -241,5 +247,6 @@ summary.push({id: i, count: unit_summary})
 };
 
 console.log('Wynik: ', summary)
+
 
 export default summary;
