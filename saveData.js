@@ -1,8 +1,8 @@
 var fs = require("fs");
-import lack from './src/AppContainer';
-var sampleObject = lack;
+import fixed_units from './src/UnitsContainer';
+var sampleObject = fixed_units;
 
-fs.writeFile("./problem.json", JSON.stringify(sampleObject), (err) => {
+fs.writeFile("./jednostki_fix.json", JSON.stringify(sampleObject), (err) => {
     if (err) {
         console.error(err);
         return;

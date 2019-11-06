@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import summary from './AppContainer'
+import summary from './AppContainer';
 
 
 const App = () => {
@@ -8,7 +8,9 @@ const App = () => {
        return (
     <div>
       <p>React here!</p>
-      <p></p>
+      <ul>
+      {summary.map(item => <li key={item.id}>jednostka urbanistyczna: {item.id} Ilość rekordów: {item.count}</li>)}
+             </ul>
     </div>
   );
 };

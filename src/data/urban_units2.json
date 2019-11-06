@@ -2396,7 +2396,7 @@
  {
    "DZIELNICA": "KOMOROWICE ŚLĄSKIE",
    "JEDNOSTKA_URBANISTYCZNA": 66,
-   "ULICA": "ul. Grażyńskiego 223, 225, 339, 351, 377",
+   "ULICA": "ul. Michała Grażyńskiego 223, 225, 339, 351, 377",
    "NR_PAD": "2466323",
    "ID": 956
  },
@@ -3369,7 +3369,7 @@
  {
    "DZIELNICA": "ALEKSANDROWICE",
    "JEDNOSTKA_URBANISTYCZNA": 22,
-   "ULICA": "ul. Juliusza Osterwy 1-37, 47, 49, 51",
+   "ULICA": "ul. Juliusza Osterwy 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 47, 49, 51",
    "NR_PAD": "2466821",
    "ID": 252
  },
@@ -3390,14 +3390,14 @@
  {
    "DZIELNICA": "DOLNE PRZEDMIEŚCIE",
    "JEDNOSTKA_URBANISTYCZNA": 10,
-   "ULICA": "ul. Juliusza Słowackiego 20-23, 25-82",
+   "ULICA": "ul. Juliusza Słowackiego 20, 22, 23, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82",
    "NR_PAD": "2466368",
    "ID": 115
  },
  {
    "DZIELNICA": "ŚRÓDMIEŚCIE BIELSKO",
    "JEDNOSTKA_URBANISTYCZNA": 2,
-   "ULICA": "ul. Juliusza Słowackiego 4-19, 24",
+   "ULICA": "ul. Juliusza Słowackiego 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 24",
    "NR_PAD": "2466368",
    "ID": 18
  },
@@ -4328,7 +4328,7 @@
  {
    "DZIELNICA": "LIPNIK",
    "JEDNOSTKA_URBANISTYCZNA": 76,
-   "ULICA": "ul. ks. Stanisława Brzóski  parzyste: 13-14, nieparzyste: 1-13",
+   "ULICA": "ul. ks. Stanisława Brzóski parzyste: 13-14, nieparzyste: 1-13",
    "NR_PAD": "2466759",
    "ID": 1164
  },
@@ -4370,7 +4370,7 @@
  {
    "DZIELNICA": "LESZCZYNY",
    "JEDNOSTKA_URBANISTYCZNA": 41,
-   "ULICA": "ul. Księcia Józefa Poniatowskiegoo",
+   "ULICA": "ul. Księcia Józefa Poniatowskiego",
    "NR_PAD": "200049253",
    "ID": 485
  },
@@ -4615,7 +4615,7 @@
  {
    "DZIELNICA": "OSIEDLE GRUNWALDZKIE",
    "JEDNOSTKA_URBANISTYCZNA": 16,
-   "ULICA": "ul. Lipnicka 1-61, parzyste: 62-96",
+   "ULICA": "ul. Lipnicka 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 64, 66, 68, 70, 72, 74, 76, 78, 80, 82, 84, 86, 88, 90, 92, 94, 96",
    "NR_PAD": "2466696",
    "ID": 215
  },
@@ -5196,7 +5196,7 @@
  {
    "DZIELNICA": "LESZCZYNY",
    "JEDNOSTKA_URBANISTYCZNA": 43,
-   "ULICA": "ul. Miernicza  parzyste: 2-134, nieparzyste: 1-45",
+   "ULICA": "ul. Miernicza parzyste: 2-134, nieparzyste: 1-45",
    "NR_PAD": "2467030",
    "ID": 526
  },
@@ -5994,7 +5994,7 @@
  {
    "DZIELNICA": "BIELSKO POŁUDNIE",
    "JEDNOSTKA_URBANISTYCZNA": 17,
-   "ULICA": "ul. Partyzantów 32-57, 58, 60, 62, 64, 66",
+   "ULICA": "ul. Partyzantów 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 60, 62, 64, 66",
    "NR_PAD": "2466977",
    "ID": 225
  },
@@ -6771,7 +6771,7 @@
  {
    "DZIELNICA": "ALEKSANDROWICE",
    "JEDNOSTKA_URBANISTYCZNA": 23,
-   "ULICA": "ul. Rajska ",
+   "ULICA": "ul. Rajska",
    "NR_PAD": "2466309",
    "ID": 272
  },
@@ -7114,7 +7114,7 @@
  {
    "DZIELNICA": "STARE MIASTO",
    "JEDNOSTKA_URBANISTYCZNA": 1,
-   "ULICA": "ul. Schodowa ",
+   "ULICA": "ul. Schodowa",
    "NR_PAD": "2467084",
    "ID": 5
  },
@@ -7359,7 +7359,7 @@
  {
    "DZIELNICA": "ALEKSANDROWICE",
    "JEDNOSTKA_URBANISTYCZNA": 23,
-   "ULICA": "ul. Smolna ",
+   "ULICA": "ul. Smolna",
    "NR_PAD": "2467327",
    "ID": 287
  },
@@ -8332,7 +8332,7 @@
  {
    "DZIELNICA": "DOLNE PRZEDMIEŚCIE",
    "JEDNOSTKA_URBANISTYCZNA": 11,
-   "ULICA": "ul. Trakcyjna ",
+   "ULICA": "ul. Trakcyjna",
    "NR_PAD": "2466946",
    "ID": 144
  },
@@ -8591,7 +8591,7 @@
 {
   "DZIELNICA": "STARE MIASTO",
   "JEDNOSTKA_URBANISTYCZNA": 1,
-  "ULICA": "ul. Waryńskiego",
+  "ULICA": "ul. Ludwika Waryńskiego",
   "NR_PAD": "2466788",
   "ID": 10
 },
