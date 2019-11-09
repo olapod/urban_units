@@ -1,30 +1,37 @@
-var http = require("http"),
-    fs = require("fs"),
-    port = 8080,
-    pathToJSONFile = './jsonFile.txt';
+var express = require('express');
+var app = express();
+var multer = require('multer')
+var cors = require('cors');
 
-http.createServer(function(request, response)
-{
-    if(request.method == 'GET')
-    {
-        response.writeHead(200, {"Content-Type": "application/json"});
-        response.write(fs.readFile(pathToJSONFile, 'utf8'));
-        response.end();
-    }
-    else if(request.method == 'POST')
-    {
-        var body = [];
+app.use(cors());
 
-        request.on('data', function(chunk)
-        {
-            body.push(chunk);
-        });
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+    cb(null, 'public')
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + '-' +file.originalname )
+  }
+});
 
-        request.on('end', function()
-        {
-            body = Buffer.concat(body).toString();
-            var myJSONdata = body.split("=")[1];
-            fs.writeFileSync(pathToJSONFile, myJSONdata); //default: 'utf8'
-        });
-    }
-}).listen(port);
+var upload = multer({ storage: storage }).single('file');
+
+app.post('/upload',function(req, res) {
+
+    upload(req, res, function (err) {
+           if (err instanceof multer.MulterError) {
+               return res.status(500).json(err)
+           } else if (err) {
+               return res.status(500).json(err)
+           }
+      return res.status(200).send(req.file)
+
+    })
+
+});
+
+app.listen(8000, function() {
+
+    console.log('App running on port 8000');
+
+});
