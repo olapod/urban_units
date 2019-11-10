@@ -1,4 +1,6 @@
-import urban_units from './data/urban_units2';
+// import urban_units from './data/urban_units2';
+
+const convert_urban_units = (urban_units) => {
 
 //SFORMATOWANIE BAZY JEDNOSTEK URBANISTYCZNYCH
 
@@ -8,22 +10,42 @@ import urban_units from './data/urban_units2';
 var streets = [];
 var numbers = [];
 
+//czyszczenie bazy z pustych rekordów
+for(var i=0; i < urban_units.length; i++) {
+  if (urban_units[i].JEDNOSTKA_URBANISTYCZNA === undefined) {
+   urban_units.splice(i,1)
+  }
+}
+
+
 //tworzenie tablicy z samymi nazwami ulic
 for (var key in urban_units) {
+  if (urban_units[key].ULICA) {
     streets.push(urban_units[key].ULICA);
-  };
+  }};
+
 
 for(var i=0; i < streets.length; i++) {
-  streets[i] = streets[i].replace(/(?<=([A-ZŻŹĆĄŚĘŁÓŃ][a-zżźćńółęąś]*))((\s\d|\sparzyste|\snieparzyste|\sza wyjątkiem).*)/g, '');
-}
+
+    streets[i] = streets[i].replace(/(?<=([A-ZŻŹĆĄŚĘŁÓŃ][a-zżźćńółęąś]*))((\s\d|\sparzyste|\snieparzyste|\sza wyjątkiem).*)/g, '');
+
+  }
+
 
 //tworzenie tablicy z samymi numerami (bez liter np.1a)
 numbers = urban_units
   .map(unit => (unit.ULICA.replace(/(?<=\d)[^\d,\-]/gi, "")));
+
+// numbers = urban_units.map(function(unit) {
+//   if(!unit.ULICA === 'undefined') {
+//     unit.ULICA.replace(/(?<=\d)[^\d,\-]/gi, "");
+//   }
+// });
+
 //tworzenie tablicy z samymi numerami
 for(var i=0; i < numbers.length; i++) {
- numbers[i] = numbers[i].match(/(?<=([A-ZŻŹĆĄŚĘŁÓŃ][a-zżźćńółęąś]*\s))((\d|parzyste|nieparzyste|za wyjątkiem).*)/g);
-}
+   numbers[i] = numbers[i].match(/(?<=([A-ZŻŹĆĄŚĘŁÓŃ][a-zżźćńółęąś]*\s))((\d|parzyste|nieparzyste|za wyjątkiem).*)/g);
+  }
 
 //Przerobienie w tablicę ze stringami i infinity
 for(var i=0; i < numbers.length; i++) {
@@ -181,5 +203,8 @@ for(var i=0; i < fixed_units.length; i++) {
   fixed_units[i].ULICA = streets[i];
   fixed_units[i].NUMERY = fixedNumbers[i];
 }
+return fixed_units;
 
-export default fixed_units;
+}
+
+export default convert_urban_units;
