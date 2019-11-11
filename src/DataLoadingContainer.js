@@ -1,13 +1,15 @@
 import React from "react";
 import CSVReader from 'react-csv-reader';
-import compare_databases from './RegonContainer';
+import compare_databases from './DatabaseContainer';
 import convert_urban_units from './UnitsContainer';
+import get_summary from './SummaryContainer';
+import get_problem_units from './ProblemUnitsContainer'
 import Summary from './Summary';
 
 class DataLoadingContainer extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {urban_units: [], database: [], summary: []};
+        this.state = {urban_units: [], database: [], summary: [], problem_units: [], clickButton: false};
         this.handleClick = this.handleClick.bind(this);
       }
 
@@ -23,18 +25,33 @@ class DataLoadingContainer extends React.Component {
       });
   };
 
+  getDataBase() {
+    this.setState({
+      database: compare_databases(this.state.database, convert_urban_units(this.state.urban_units)),
+    });
+  }
   getSummary() {
-      return compare_databases(this.state.database, convert_urban_units(this.state.urban_units));
-      debugger;
-    };
+    this.getDataBase();
+    this.setState({
+      summary: get_summary(this.state.database)
+    });
+  }
+
+  getProblemUnits() {
+    this.setState({
+      problem_units: get_problem_units(this.state.database)
+    });
+  }
 
     handleClick() {
-      // this.getSummary();
       this.setState({
-        summary:  this.getSummary()
-        });
+        clickButton: true
+      });
+      this.getSummary();
+      this.getProblemUnits();
     }
-render() {
+
+renderUpload() {
 
        return (
     <div>
@@ -57,9 +74,26 @@ render() {
         // fileEncoding="UTF-8"
       />
       <button onClick={this.handleClick}>Porównaj oba pliki</button>
-       <Summary summary={this.state.summary}/>
-    </div>
-  );
-       }
-};
+       </div> )}
+
+      // renderSpinner() {
+      // if (this.state.clickButton === true) { return (<p>Trwa porównywanie plików...</p>)}
+      // else {return null}
+      // }
+
+      renderSummary() {
+      if (this.state.summary.length) { return (<Summary summary={this.state.summary} problem_units={this.state.problem_units}/>)}
+      else {return null}
+      }
+
+      render () {
+        return (
+          <div>
+            {this.renderUpload()}
+            {/* {this.renderSpinner()} */}
+            {this.renderSummary()}
+          </div>
+        );
+      }
+ };
 export default DataLoadingContainer;
