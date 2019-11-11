@@ -39,22 +39,6 @@ for (var k = 0; k < database.length; k++) {
  }
 }
 
-
-
-// var summary = [];
-// for (var i = 1; i < 89; i++) {
-//   var unit_summary = database.filter(item => item.jednostka == i).length;
-//   summary.push({id: i, count: unit_summary})
-//   };
-
-// var problem_units = [];
-// for (var i = 0; i < database.length; i++) {
-//   if (!database[i].jednostka) {
-//     problem_units.push(database[i]);
-//   }
-// }
-// console.log('Porównanie: ', summary);
-// console.log('Reszta: ', problem_units);
 return database;
 }
 export default compare_databases;

@@ -9,31 +9,32 @@ import Summary from './Summary';
 class DataLoadingContainer extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {urban_units: [], database: [], summary: [], problem_units: [], clickButton: false};
+        this.state = {urban_units: [], database: [], summary: [], problem_units: [], loading: false};
         this.handleClick = this.handleClick.bind(this);
       }
 
-    loadUrbanUnits = units => {
-    this.setState({
+     loadUrbanUnits = units => {
+      this.setState({
         urban_units: units
-          });
+          })
   };
 
   loadDatabase = data => {
     this.setState({
-        database: data
-      });
+      database: data
+      })
   };
 
   getDataBase() {
     this.setState({
-      database: compare_databases(this.state.database, convert_urban_units(this.state.urban_units)),
+      database: compare_databases(this.state.database, convert_urban_units(this.state.urban_units))
     });
   }
   getSummary() {
     this.getDataBase();
     this.setState({
-      summary: get_summary(this.state.database)
+      summary: get_summary(this.state.database),
+      loading: true
     });
   }
 
@@ -44,10 +45,9 @@ class DataLoadingContainer extends React.Component {
   }
 
     handleClick() {
-      this.setState({
-        clickButton: true
-      });
-      this.getSummary();
+      this.getSummary().then(() => {
+        this.setState({loading: false})
+      })
       this.getProblemUnits();
     }
 
@@ -76,10 +76,10 @@ renderUpload() {
       <button onClick={this.handleClick}>Porównaj oba pliki</button>
        </div> )}
 
-      // renderSpinner() {
-      // if (this.state.clickButton === true) { return (<p>Trwa porównywanie plików...</p>)}
-      // else {return null}
-      // }
+    renderSpinner() {
+      if (this.state.loading) { return (<p>Przetwarzam dane....</p>)}
+      else {return null}
+      }
 
       renderSummary() {
       if (this.state.summary.length) { return (<Summary summary={this.state.summary} problem_units={this.state.problem_units}/>)}
