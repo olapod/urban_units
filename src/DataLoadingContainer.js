@@ -95,7 +95,7 @@ renderUpload() {
         return (
           <div>
             {this.renderUpload()}
-            {/* {this.renderSpinner()} */}
+            {this.renderSpinner()}
             {this.renderSummary()}
           </div>
         );
