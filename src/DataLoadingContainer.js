@@ -19,17 +19,23 @@ class DataLoadingContainer extends React.Component {
           })
   };
 
-  loadDatabase = data => {
-    this.setState({
-      database: data
-      })
+  setStateAsync(state) {
+    return new Promise((resolve) => {
+      this.setState(state, resolve)
+    });
+  }
+
+  loadDatabase = async data => {
+    this.setStateAsync({loading: true})
+    .then(this.setStateAsync({database: data}))
+    .then(this.setStateAsync({loading: false}))
   };
 
   getDataBase() {
-    this.setState({
-      database: compare_databases(this.state.database, convert_urban_units(this.state.urban_units))
-    });
+    this.setState(
+      {database: compare_databases(this.state.database, convert_urban_units(this.state.urban_units))})
   }
+
   getSummary() {
     this.getDataBase();
     this.setState({
@@ -45,9 +51,8 @@ class DataLoadingContainer extends React.Component {
   }
 
     handleClick() {
-      this.getSummary().then(() => {
-        this.setState({loading: false})
-      })
+      this.getSummary()
+      this.setState({loading: false})
       this.getProblemUnits();
     }
 
