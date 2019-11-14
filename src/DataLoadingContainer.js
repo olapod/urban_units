@@ -13,35 +13,31 @@ class DataLoadingContainer extends React.Component {
         this.handleClick = this.handleClick.bind(this);
       }
 
-     loadUrbanUnits = units => {
-      this.setState({
-        urban_units: units
-          })
+
+  loadUrbanUnits = units => {
+    this.setState({
+      urban_units: units
+      })
   };
 
-  setStateAsync(state) {
-    return new Promise((resolve) => {
-      this.setState(state, resolve)
-    });
-  }
-
-  loadDatabase = async data => {
-    this.setStateAsync({loading: true})
-    .then(this.setStateAsync({database: data}))
-    .then(this.setStateAsync({loading: false}))
+  loadDatabase = data => {
+    this.setState({
+      database: data
+        })
   };
 
   getDataBase() {
-    this.setState(
-      {database: compare_databases(this.state.database, convert_urban_units(this.state.urban_units))})
+    this.setState({
+         database: compare_databases(this.state.database, convert_urban_units(this.state.urban_units))
+  })
+
   }
 
   getSummary() {
+    console.log('Check: ', this.state.loading)
     this.getDataBase();
-    this.setState({
-      summary: get_summary(this.state.database),
-      loading: true
-    });
+    var summary = get_summary(this.state.database);
+    return Promise.resolve(summary);
   }
 
   getProblemUnits() {
@@ -51,10 +47,21 @@ class DataLoadingContainer extends React.Component {
   }
 
     handleClick() {
-      this.getSummary()
-      this.setState({loading: false})
-      this.getProblemUnits();
+
+      this.setState({loading: true},() => {
+        console.log('Check: ', this.state.loading);
+        this.getSummary().then(res => {
+          this.setState({
+            summary: res,
+            loading: false
+          })
+
+        })
+        this.getProblemUnits();
+    });
+
     }
+
 
 renderUpload() {
 
@@ -82,7 +89,7 @@ renderUpload() {
        </div> )}
 
     renderSpinner() {
-      if (this.state.loading) { return (<p>Przetwarzam dane....</p>)}
+      if (this.state.loading === true) { return (<p>Przetwarzam dane....</p>)}
       else {return null}
       }
 
