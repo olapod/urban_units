@@ -34,11 +34,21 @@ class DataLoadingContainer extends React.Component {
   }
 
   getSummary() {
-    console.log('Check: ', this.state.loading)
+  //   this.setState({
+  //     loading: true,
+  // }, () => console.log('Test1: ', this.state.loading));
     this.getDataBase();
     var summary = get_summary(this.state.database);
     return Promise.resolve(summary);
   }
+
+//  getSummary() {
+
+//     this.getDataBase();
+//     this.setState({
+//       summary: get_summary(this.state.database)
+//     });
+//   }
 
   getProblemUnits() {
     this.setState({
@@ -46,7 +56,27 @@ class DataLoadingContainer extends React.Component {
     });
   }
 
-    handleClick() {
+    // handleClick() {
+    // //   this.setState({
+    // //     loading: true,
+    // // }, () => console.log('Test1: ', this.state.loading));
+    // this.getSummary().then(res => {
+    //   this.setState({
+    //     summary: res,
+    //     loading: false
+    //   })
+    //   this.getProblemUnits();
+    //   console.log('Test2: ', this.state.loading)
+
+    // });
+    handleClick = () => {
+    //   this.setState({loading:true}, () =>{
+    //     console.log('Test1: ', this.state.loading)
+    //     this.getSummary();
+    //     this.getProblemUnits();
+    //     // this.setState({loading:false});
+    //   });
+    // };
 
       this.setState({loading: true},() => {
         console.log('Check: ', this.state.loading);
