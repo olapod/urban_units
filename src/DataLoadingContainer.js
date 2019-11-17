@@ -13,7 +13,6 @@ class DataLoadingContainer extends React.Component {
         this.handleClick = this.handleClick.bind(this);
       }
 
-
   loadUrbanUnits = units => {
     this.setState({
       urban_units: units
@@ -29,26 +28,17 @@ class DataLoadingContainer extends React.Component {
   getDataBase() {
     this.setState({
          database: compare_databases(this.state.database, convert_urban_units(this.state.urban_units))
-  })
-
-  }
+    })
+  };
 
   getSummary() {
-  //   this.setState({
-  //     loading: true,
-  // }, () => console.log('Test1: ', this.state.loading));
     this.getDataBase();
     var summary = get_summary(this.state.database);
+    this.setState({
+      summary: summary
+      })
     return Promise.resolve(summary);
   }
-
-//  getSummary() {
-
-//     this.getDataBase();
-//     this.setState({
-//       summary: get_summary(this.state.database)
-//     });
-//   }
 
   getProblemUnits() {
     this.setState({
@@ -56,86 +46,69 @@ class DataLoadingContainer extends React.Component {
     });
   }
 
-    // handleClick() {
-    // //   this.setState({
-    // //     loading: true,
-    // // }, () => console.log('Test1: ', this.state.loading));
-    // this.getSummary().then(res => {
-    //   this.setState({
-    //     summary: res,
-    //     loading: false
-    //   })
-    //   this.getProblemUnits();
-    //   console.log('Test2: ', this.state.loading)
+  showSpinner() {
+    this.setState({
+      loading: true
+    })
+  }
 
-    // });
-    handleClick = () => {
-    //   this.setState({loading:true}, () =>{
-    //     console.log('Test1: ', this.state.loading)
-    //     this.getSummary();
-    //     this.getProblemUnits();
-    //     // this.setState({loading:false});
-    //   });
-    // };
+  hideSpinner() {
+    this.setState({
+      loading: false
+    })
+  }
 
-      this.setState({loading: true},() => {
-        console.log('Check: ', this.state.loading);
-        this.getSummary().then(res => {
-          this.setState({
-            summary: res,
-            loading: false
-          })
-
+  handleClick = (event) => {
+    event.preventDefault();
+    this.setState({loading: true},() => {
+    this.getSummary()
+    .then(res => {
+      this.getProblemUnits();
+      })
+      .then(res => {
+        this.hideSpinner();
         })
-        this.getProblemUnits();
-    });
+    })
+  }
 
-    }
-
-
-renderUpload() {
-
-       return (
-    <div>
-      <h1>Wgranie plików do porównania</h1>
-      <p>W celu uzyskania polskich znaków pliki powinny być kodowane w formacie UTF-8</p>
-      <CSVReader
-        label="Wybierz plik CSV z bazą jednostek urbanistycznych"
-        onFileLoaded={this.loadUrbanUnits}
-        // inputId="ObiWan"
-        inputStyle={{color: 'red'}}
-        parserOptions={{header: true}}
-        // fileEncoding="UTF-8"
-      />
-      <CSVReader
-        label="Wybierz plik CSV z bazą danych do porównania"
-        onFileLoaded={this.loadDatabase}
-        // inputId="ObiWan"
-        inputStyle={{color: 'red'}}
-        parserOptions={{header: true}}
-        // fileEncoding="UTF-8"
-      />
-      <button onClick={this.handleClick}>Porównaj oba pliki</button>
-       </div> )}
-
-    renderSpinner() {
-      if (this.state.loading === true) { return (<p>Przetwarzam dane....</p>)}
-      else {return null}
-      }
-
-      renderSummary() {
-      if (this.state.summary.length) { return (<Summary summary={this.state.summary} problem_units={this.state.problem_units}/>)}
-      else {return null}
-      }
-
-      render () {
+    renderSummary() {
+      const { loading, problem_units, summary } = this.state;
+      console.log('Spr: ', this.state.loading);
+      if(loading === true) {
         return (
           <div>
-            {this.renderUpload()}
-            {this.renderSpinner()}
-            {this.renderSummary()}
+        <p>Przetwarzam dane....</p>
           </div>
-        );
-      }
- };
+        )}
+        if(summary.length > 0 && loading === false) {
+          return (
+            <div>
+            <Summary summary={summary} problem_units={problem_units}/>
+            </div>
+          )
+          }
+    }
+
+    render() {
+      return (
+        <div>
+          <h1>Wgranie plików do porównania</h1>
+          <p>W celu uzyskania polskich znaków pliki powinny być kodowane w formacie UTF-8</p>
+          <CSVReader
+            label="Wybierz plik CSV z bazą jednostek urbanistycznych"
+            onFileLoaded={this.loadUrbanUnits}
+            inputStyle={{color: 'red'}}
+            parserOptions={{header: true}}
+          />
+          <CSVReader
+            label="Wybierz plik CSV z bazą danych do porównania"
+            onFileLoaded={this.loadDatabase}
+            inputStyle={{color: 'red'}}
+            parserOptions={{header: true}}
+          />
+          <button onClick={this.handleClick}>Porównaj oba pliki</button>
+          {this.renderSummary()}
+          </div>
+      )}
+};
 export default DataLoadingContainer;
