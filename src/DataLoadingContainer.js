@@ -13,7 +13,7 @@ class DataLoadingContainer extends React.Component {
         this.handleClick = this.handleClick.bind(this);
       }
 
-  loadUrbanUnits = units => {
+   loadUrbanUnits = units => {
     this.setState({
       urban_units: units
       })
@@ -32,13 +32,23 @@ class DataLoadingContainer extends React.Component {
   };
 
   getSummary() {
+
     this.getDataBase();
     var summary = get_summary(this.state.database);
-    this.setState({
-      summary: summary
-      })
+    this.getProblemUnits();
     return Promise.resolve(summary);
-  }
+
+
+}
+
+//   getSummary() {
+//     this.getDataBase();
+//     this.setState({
+//       summary: get_summary(this.state.database),
+
+//     })
+//     this.getProblemUnits();
+// }
 
   getProblemUnits() {
     this.setState({
@@ -46,50 +56,36 @@ class DataLoadingContainer extends React.Component {
     });
   }
 
-  showSpinner() {
-    this.setState({
-      loading: true
-    })
-  }
+  // hideSpinner() {
+  //   // var loading = false
+  //   this.setState({
+  //     loading: false
+  //   })
+  //   // return Promise.resolve(loading);
+  // }
 
   hideSpinner() {
-    this.setState({
-      loading: false
+    this.getSummary().then(res => {
+      this.setState({
+        summary: res,
+        loading: false
+      })
+
     })
   }
 
   handleClick = (event) => {
     event.preventDefault();
-    this.setState({loading: true},() => {
-    this.getSummary()
-    .then(res => {
-      this.getProblemUnits();
-      })
-      .then(res => {
-        this.hideSpinner();
-        })
-    })
-  }
-
-    renderSummary() {
-      const { loading, problem_units, summary } = this.state;
-      console.log('Spr: ', this.state.loading);
-      if(loading === true) {
-        return (
-          <div>
-        <p>Przetwarzam dane....</p>
-          </div>
-        )}
-        if(summary.length > 0 && loading === false) {
-          return (
-            <div>
-            <Summary summary={summary} problem_units={problem_units}/>
-            </div>
-          )
-          }
+    this.setState({
+            loading: true
+      } ,this.hideSpinner)
     }
 
+
+
     render() {
+      const { loading, problem_units, summary } = this.state;
+      console.log('Spr: ', loading);
       return (
         <div>
           <h1>Wgranie plików do porównania</h1>
@@ -107,7 +103,9 @@ class DataLoadingContainer extends React.Component {
             parserOptions={{header: true}}
           />
           <button onClick={this.handleClick}>Porównaj oba pliki</button>
-          {this.renderSummary()}
+
+       <Summary loading={loading} summary={summary} problem_units={problem_units}/>
+
           </div>
       )}
 };
