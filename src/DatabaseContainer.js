@@ -38,7 +38,8 @@ for (var k = 0; k < database.length; k++) {
       }
  }
 }
-
+console.log('Baza: ', database[10])
+console.log('Jednostki: ', fixed_units[10])
 return database;
 }
 export default compare_databases;
