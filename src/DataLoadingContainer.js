@@ -10,7 +10,9 @@ class DataLoadingContainer extends React.Component {
     constructor(props) {
         super(props);
         this.state = {urban_units: [], database: [], summary: [], problem_units: [], loading: false, converted_units: []};
+        this.initialState = { ...this.state }
         this.handleClick = this.handleClick.bind(this);
+        this.resetHandler = this.resetHandler.bind(this);
       }
 
    loadUrbanUnits = units => {
@@ -38,15 +40,15 @@ convertUnits() {
     })
   };
 
-  getSummary() {
-
+  async getSummary () {
     this.getDataBase();
     var summary = get_summary(this.state.database);
     this.getProblemUnits();
-     return Promise.resolve(summary);
-
-
-}
+        return new Promise(
+      function (resolve, reject) {
+        resolve(summary);
+})
+  }
 
 //   getSummary() {
 //     this.getDataBase();
@@ -71,23 +73,21 @@ convertUnits() {
   //   // return Promise.resolve(loading);
   // }
 
-  hideSpinner() {
-    this.getSummary().then(res => {
-      this.setState({
-        summary: res,
-        loading: false
-      })
-    })
-  }
 
   handleClick = (event) => {
     event.preventDefault();
-    this.setState({
-            loading: true
-      } ,this.hideSpinner)
-    }
+    this.setState({ loading: true }, () => {
+      this.getSummary()
+      .then(result => this.setState({
+          loading: false,
+          summary: result
+        }))
+    });
+  }
 
-
+  resetHandler() {
+    this.setState(this.initialState);
+  }
 
     render() {
       const { loading, problem_units, summary, database, converted_units, urban_units } = this.state;
@@ -129,9 +129,10 @@ convertUnits() {
       if(database.length && urban_units.length && !summary.length) {
       return (
         <div className='DataLoadingContainer compare'>
-          <p>Pliki do porównania zostały wgrane.</p>
-          <button onClick={this.handleClick} className='button'>Porównaj oba pliki</button>
-
+          <p className="compare_text">Pliki do porównania zostały wgrane.</p>
+          <div className='button_div'>
+            <button onClick={this.handleClick} className='button_compare button'>Porównaj oba pliki</button>
+          </div>
         </div>
       )}
       if (loading) {
@@ -143,7 +144,7 @@ convertUnits() {
       if(summary.length) {
         return (
           <div className='DataLoadingContainer'>
-         <Summary summary={summary} problem_units={problem_units} database={database} converted_units={converted_units}/>
+         <Summary summary={summary} problem_units={problem_units} database={database} converted_units={converted_units} action={this.resetHandler}/>
           </div>
         )}
   };

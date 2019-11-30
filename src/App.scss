@@ -15,6 +15,15 @@ footer {
     text-align: center;
 }
 
+ul {
+    margin: 0;
+    padding: 10px;
+  }
+
+  a:link {
+    text-decoration: none;
+  }
+
 .DataLoadingContainer {
     min-height: 80vh;
 }
@@ -27,6 +36,9 @@ footer {
 
 .title {
     margin: 40px;
+    border: 2px solid black;
+    padding: 20px;
+    background-color: rgb(216, 117, 35);
 }
 
 .csv {
@@ -42,10 +54,28 @@ footer {
     padding-top: 30vh;
     padding-left: 20px;
     padding-right: 20px;
-}
+    padding-bottom: 20px;
+    font-weight: bold;
+
+    .matched {
+        padding-top: 20px;
+        padding-bottom: 20px;
+        color: green
+    }
+
+    .no-matched {
+        color: red;
+        padding-bottom: 20px;
+    }
+
+
+ }
 
 .compare {
     text-align: center;
+    .compare_text {
+        padding-bottom: 20px;
+    }
 }
 
 input {
@@ -54,17 +84,52 @@ input {
     padding: 20px;
     margin: 20px;
 }
+.button_div {
+    text-align: center;
+}
 
-button {
-    margin: 20px;
+.button {
     border: 2px solid black;
     border-radius: 5px;
     padding: 20px;
     transition-duration: 0.4s;
+    display: block;
+    background-color:#4CAF50;
 }
 
-button:hover {
-    background-color: #4CAF50; /* Green */
+.upload_button {
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 10px;
+    transition-duration: 0.4s;
+    display: block;
+    background-color: rgb(216, 117, 35);
+}
+
+.button_compare {
+    margin: auto;
+}
+
+.reset {
+    margin-left: 10px;
+.button_reset {
+    margin-top: 20px;
+}
+}
+
+.button:hover {
+    background-color: rgb(139, 43, 43); /* Green */
     color: white;
     cursor: pointer;
   }
+
+  .upload_button:hover {
+    background-color: rgb(38, 107, 116); /* Green */
+    color: white;
+    cursor: pointer;
+  }
+
+.upload_links {
+    display: inline-block;
+    padding: 10px;
+}
