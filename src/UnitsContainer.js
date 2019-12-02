@@ -28,7 +28,7 @@ for (var key in urban_units) {
 for(var i=0; i < streets.length; i++) {
 
     streets[i] = streets[i].replace(/(?<=([A-ZŻŹĆĄŚĘŁÓŃ][a-zżźćńółęąś]*))((\s\d|\sparzyste|\snieparzyste|\sza wyjątkiem).*)/g, '');
-
+    streets[i] = streets[i].trim();
   }
 
 

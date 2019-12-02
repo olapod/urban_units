@@ -8,10 +8,23 @@ class Summary extends React.Component {
 
   return (
           <div className='container'>
-            <div>
+            <div className='summary-container'>
               <h3>Wynik porównania baz danych:</h3>
-              <ul>{summary.map(item => <li key={item.id}>Jednostka urbanistyczna: {item.id} Liczba rekordów: {item.count}</li>)}
-              </ul>
+              <table className="summary_table">
+                <thead>
+              <tr>
+                <th>Jednostka urbanistyczna</th>
+                <th>Liczba rekordów</th>
+              </tr>
+              </thead>
+              <tbody>
+                {summary.map(item =>
+                <tr key={item.id}>
+                  <td> {item.id}</td>
+                <td>  {item.count}</td>
+              </tr>)}
+              </tbody>
+              </table>
             </div>
             <div >
               <div className='summary_text'>

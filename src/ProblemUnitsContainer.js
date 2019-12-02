@@ -5,7 +5,7 @@ for (var i = 0; i < database.length; i++) {
     problem_units.push(database[i]);
   }
 }
-console.log('Problem: ', problem_units[10])
+// console.log('Problem: ', problem_units[10])
   return problem_units;
 }
 

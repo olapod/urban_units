@@ -6,6 +6,7 @@ import get_summary from './SummaryContainer';
 import get_problem_units from './ProblemUnitsContainer';
 import Summary from './Summary';
 
+
 class DataLoadingContainer extends React.Component {
     constructor(props) {
         super(props);
@@ -40,7 +41,7 @@ convertUnits() {
     })
   };
 
-  async getSummary () {
+ getSummary () {
     this.getDataBase();
     var summary = get_summary(this.state.database);
     this.getProblemUnits();
@@ -65,25 +66,17 @@ convertUnits() {
     });
   }
 
-    // hideSpinner() {
-  //   // var loading = false
-  //   this.setState({
-  //     loading: false
-  //   })
-  //   // return Promise.resolve(loading);
-  // }
-
-
-  handleClick = (event) => {
+   handleClick = (event) => {
     event.preventDefault();
+
     this.setState({ loading: true }, () => {
-      this.getSummary()
+    this.getSummary()
       .then(result => this.setState({
           loading: false,
           summary: result
         }))
-    });
-  }
+      })
+    }
 
   resetHandler() {
     this.setState(this.initialState);
@@ -102,14 +95,17 @@ convertUnits() {
           </div>
           <div className='container'>
             <div className='csv'>
+
               <CSVReader
-                label="Wybierz plik CSV z bazą jednostek urbanistycznych "
+                label="Wybierz plik CSV z bazą jednostek urbanistycznych"
                 onFileLoaded={this.loadUrbanUnits}
-                inputStyle={{color: 'red'}}
+                inputStyle={{ color: 'red' }}
                 parserOptions={{header: true}}
                 cssClass="csv-reader-input"
                 cssInputClass='csv-input'
+                inputId='file'
               />
+              {/* <label htmlFor="file">Wybierz plik CSV z bazą jednostek urbanistycznych</label> */}
               <p>Plik dostarcza Wydział RG</p><br/>
             </div>
             <div className='csv'>
@@ -121,6 +117,7 @@ convertUnits() {
                 cssClass="csv-reader-input"
                 cssInputClass='csv-input'
               />
+
               <p>Plik powinien zawierać kolumnę o nazwię "ulica" oraz kolumnę o nazwie "numer". Ulice powinny mieć zapis dokładnie taki sam jak w bazie jednostek urbanistycznych. Wielkość liter ma znaczenie!!! </p><br/>
             </div>
           </div>

@@ -9,8 +9,12 @@ for (var i = 0; i < database.length; i++) {
   database[i].numer = database[i].numer.match(/^\d+/gi);
    database[i].numer = parseInt(database[i].numer);
   }
-  if (!database[i].ulica === null)
-     database[i].ulica.trim();
+}
+
+for (var i = 0; i < database.length; i++) {
+ if (database[i].ulica) {
+   database[i].ulica = database[i].ulica.trim();
+ }
 }
 
 //porównanie obu baz i przypisanie do databaseu jednostki urbanistycznej;
@@ -38,8 +42,8 @@ for (var k = 0; k < database.length; k++) {
       }
  }
 }
-console.log('Baza: ', database[10])
-console.log('Jednostki: ', fixed_units[10])
+// console.log('Baza: ', database[1])
+// console.log('Jednostki: ', fixed_units[10])
 return database;
 }
 export default compare_databases;
