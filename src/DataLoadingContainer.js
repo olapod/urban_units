@@ -12,7 +12,6 @@ class DataLoadingContainer extends React.Component {
         super(props);
         this.state = {urban_units: [], database: [], summary: [], problem_units: [], loading: false, converted_units: []};
         this.initialState = { ...this.state }
-        this.handleClick = this.handleClick.bind(this);
         this.resetHandler = this.resetHandler.bind(this);
       }
 
@@ -51,6 +50,13 @@ getSummary () {
       });
 };
 
+// getSummary () {
+//   this.getDataBase();
+//   var summary = get_summary(this.state.database);
+//   this.getProblemUnits();
+//     return summary
+// };
+
 //   getSummary() {
 //     this.getDataBase();
 //     this.setState({
@@ -78,6 +84,17 @@ handleClick = (event) => {
   })
 };
 
+// handleClick = (event) => {
+//   event.preventDefault();
+//   this.setState({ loading: true });
+//   setTimeout(() => {
+//     this.setState({
+//       loading: false,
+//       summary: this.getSummary()
+//     })
+//   }, 0)
+// };
+
 resetHandler() {
   this.setState(this.initialState);
 };
@@ -86,6 +103,13 @@ render() {
   const { loading, problem_units, summary, database, converted_units, urban_units } = this.state;
   console.log('Spr: ', loading);
 
+  if (loading) {
+    console.log('Check')
+    return (
+      <div className='DataLoadingContainer spinner'>
+        <span>wczytuje dane...</span>
+      </div>
+    )};
   if(!database.length || !urban_units.length) {
     return (
       <div className='DataLoadingContainer'>
@@ -130,12 +154,6 @@ render() {
         <div className='button_div'>
           <button onClick={this.handleClick} className='button_compare button'>Porównaj oba pliki</button>
         </div>
-      </div>
-    )};
-  if (loading) {
-    return (
-      <div className='DataLoadingContainer spinner'>
-        <span>wczytuje dane...</span>
       </div>
     )};
   if(summary.length) {
