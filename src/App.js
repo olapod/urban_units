@@ -1,89 +1,43 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import DataLoading from './DataLoading';
-import Summary from './Summary';
-import CompareButton from './CompareButton';
-import Spinner from './Spinner'
-import convert_urban_units from './UnitsContainer';
-import compare_databases from './DatabaseContainer';
-import get_summary from './SummaryContainer';
-import get_problem_units from './ProblemUnitsContainer';
+import { Provider } from 'mobx-react';
+import { observer, inject } from 'mobx-react'
+import AppStore from './stores/AppStore';
+import DataLoading from './components/DataLoading';
+import Summary from './components/Summary';
+import CompareButton from './components/CompareButton';
+import Spinner from './components/Spinner'
+
 import './App.scss';
 
-
+@inject('AppStore')
+@observer
 class App extends React.Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {urban_units: [], database: [], summary: [], problem_units: [], loading: false, converted_units: [], compared_database: []};
-    this.initialState = { ...this.state }
-    this.resetHandler = this.resetHandler.bind(this);
-    this.getSummary = this.getSummary.bind(this);
-      }
-
-loadUrbanUnits = units => {
-this.setState({
-  urban_units: units,
-})
-  this.convertUnits()
-};
-
-loadDatabase = data => {
-  this.setState({ database: data });
-};
-
-convertUnits() {
-  this.setState({
-    converted_units: convert_urban_units(this.state.urban_units)
-  })
-}
-
-getDataBase() {
-  this.setState({
-  compared_database: compare_databases(this.state.database, this.state.converted_units)
-})
-};
-
-getProblemUnits() {
-  this.setState({
-  problem_units: get_problem_units(this.state.compared_database)
-  });
-  };
-
-getSummary () {
-  this.setState({ loading: true });
-  this.getDataBase();
-  setTimeout(() => {
-      this.setState({
-      loading: false,
-      summary: get_summary(this.state.compared_database)
-    })
-    this.getProblemUnits();
-  }, 0)
-
-};
-
-resetHandler() {
-  this.setState(this.initialState);
-  };
+  // constructor(props) {
+  //   super(props);
+  //   this.resetHandler = this.resetHandler.bind(this);
+  //   this.getSummary = this.getSummary.bind(this);
+  // }
 
 renderData() {
-  if (this.state.loading) {
+  if (this.props.AppStore.loading) {
     return (
       <Spinner />
     )};
-  if(!this.state.database.length || !this.state.urban_units.length) {
+  if(!this.props.AppStore.database.length || !this.props.AppStore.urban_units.length) {
     return (
-      <DataLoading loadDatabase={this.loadDatabase} loadUrbanUnits={this.loadUrbanUnits}/>
+      <DataLoading loadDatabase={this.props.AppStore.loadDatabase} loadUrbanUnits={this.props.AppStore.loadUrbanUnits}/>
       )};
-  if(this.state.database.length && this.state.urban_units.length && !this.state.summary.length) {
+  if(this.props.AppStore.database.length && this.props.AppStore.urban_units.length && !this.props.AppStore.summary.length) {
+    console.log('Test: ', this.props.AppStore.converted_units)
     return (
-      <CompareButton getSummary={this.getSummary}/>
+      <CompareButton getSummary={this.props.AppStore.getSummary}/>
     )};
-  if(this.state.summary.length) {
+  if(this.props.AppStore.summary.length) {
     return (
       <div className='DataLoadingContainer'>
-        <Summary summary={this.state.summary} problem_units={this.state.problem_units} database={this.state.database} converted_units={this.state.converted_units} action={this.resetHandler}/>
+        <Summary summary={this.props.AppStore.summary} problem_units={this.props.AppStore.problem_units} database={this.props.AppStore.database} converted_units={this.props.AppStore.converted_units} action={this.props.AppStore.resetHandler}/>
       </div>
     )}
 }
@@ -101,5 +55,4 @@ render() {
 };
 };
 
-export default App;
-ReactDOM.render(<App />, document.getElementById("app"));
+ReactDOM.render(<Provider AppStore={new AppStore()}><App /></Provider>, document.getElementById('app'))
