@@ -24,15 +24,19 @@ class App extends React.Component {
 loadUrbanUnits = units => {
 this.setState({
   urban_units: units,
-  converted_units: convert_urban_units(this.state.urban_units)
-  })
+})
+  this.convertUnits()
 };
 
 loadDatabase = data => {
-this.setState({
-  database: data
-  })
+  this.setState({ database: data });
 };
+
+convertUnits() {
+  this.setState({
+    converted_units: convert_urban_units(this.state.urban_units)
+  })
+}
 
 getDataBase() {
   this.setState({
@@ -48,9 +52,9 @@ getProblemUnits() {
 
 getSummary () {
   this.setState({ loading: true });
+  this.getDataBase();
   setTimeout(() => {
-    this.getDataBase();
-    this.setState({
+      this.setState({
       loading: false,
       summary: get_summary(this.state.compared_database)
     })
@@ -63,7 +67,7 @@ resetHandler() {
   this.setState(this.initialState);
   };
 
-render() {
+renderData() {
   if (this.state.loading) {
     return (
       <Spinner />
@@ -82,8 +86,20 @@ render() {
         <Summary summary={this.state.summary} problem_units={this.state.problem_units} database={this.state.database} converted_units={this.state.converted_units} action={this.resetHandler}/>
       </div>
     )}
-  };
+}
 
+render() {
+    return (
+      <div >
+        <h1 className='title'>Program do przypisywania jednostek urbanistycznych do punktów adresowych</h1>
+        { this.renderData() }
+        <footer>
+          <p>Copyright Aleksandra Podsiadlik 2019</p>
+        </footer>
+      </div>
+    );
 };
+};
+
 export default App;
 ReactDOM.render(<App />, document.getElementById("app"));

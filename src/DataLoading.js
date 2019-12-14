@@ -4,9 +4,6 @@ import CSVReader from 'react-csv-reader';
 
 
 class DataLoading extends React.Component {
-
-
-
   render() {
   return (
     <div className='DataLoadingContainer'>
