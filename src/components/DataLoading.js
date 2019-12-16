@@ -1,11 +1,13 @@
 import React from "react";
 import CSVReader from 'react-csv-reader';
+import { useObserver } from "mobx-react";
+import StoreContext from '../stores/StoreContext';
 
+const DataLoading = () => {
+     const store = React.useContext(StoreContext);
+  // const [urban_units,  database] = React.useState([]);
 
-
-class DataLoading extends React.Component {
-  render() {
-  return (
+  return useObserver(() =>
     <div className='DataLoadingContainer'>
       <div className='csv_title'>
         <h4>Wgranie plików do porównania</h4>
@@ -15,7 +17,7 @@ class DataLoading extends React.Component {
           <div className='csv'>
             <CSVReader
               label="Wybierz plik CSV z bazą jednostek urbanistycznych"
-              onFileLoaded={this.props.loadUrbanUnits.bind(this)}
+              onFileLoaded={store.loadUrbanUnits}
               inputStyle={{ color: 'red' }}
               parserOptions={{header: true}}
               cssClass="csv-reader-input"
@@ -27,7 +29,7 @@ class DataLoading extends React.Component {
           <div className='csv'>
             <CSVReader
               label="Wybierz plik CSV z bazą danych do porównania "
-              onFileLoaded={this.props.loadDatabase.bind(this)}
+              onFileLoaded={store.loadDatabase}
               inputStyle={{color: 'red'}}
               parserOptions={{header: true}}
               cssClass="csv-reader-input"
@@ -39,7 +41,8 @@ class DataLoading extends React.Component {
           </div>
         </div>
       </div>
-    )};
+    )
+
 };
 
 export default DataLoading;

@@ -1,58 +1,47 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { useLocalStore, useObserver } from "mobx-react";
 import { Provider } from 'mobx-react';
-import { observer, inject } from 'mobx-react'
-import AppStore from './stores/AppStore';
+import { observer, inject } from 'mobx-react';
+import StoreProvider from './stores/StoreProvider';
+import StoreContext from './stores/StoreContext';
 import DataLoading from './components/DataLoading';
 import Summary from './components/Summary';
 import CompareButton from './components/CompareButton';
-import Spinner from './components/Spinner'
+import Spinner from './components/Spinner';
 
 import './App.scss';
 
-@inject('AppStore')
-@observer
-class App extends React.Component {
+function App() {
+  const store = React.useContext(StoreContext);
+  console.log('Test: ', store)
+  let display
 
-  // constructor(props) {
-  //   super(props);
-  //   this.resetHandler = this.resetHandler.bind(this);
-  //   this.getSummary = this.getSummary.bind(this);
-  // }
+    if (store.loading) {
+      display = <Spinner />
+      };
+    if(!store.database.length || !store.urban_units.length) {
+      display =<DataLoading loadDatabase={store.loadDatabase} loadUrbanUnits={store.loadUrbanUnits}/>
+     };
+    if(store.database.length && store.urban_units.length && !store.summary.length) {
+      display = <CompareButton getSummary={store.getSummary}/>
+      };
+    if(store.summary.length) {
+     display = <div className='DataLoadingContainer'>
+          <Summary summary={store.summary} problem_units={store.problem_units} database={store.database} converted_units={store.converted_units} action={store.resetHandler}/>
+        </div>
+    };
 
-renderData() {
-  if (this.props.AppStore.loading) {
-    return (
-      <Spinner />
-    )};
-  if(!this.props.AppStore.database.length || !this.props.AppStore.urban_units.length) {
-    return (
-      <DataLoading loadDatabase={this.props.AppStore.loadDatabase} loadUrbanUnits={this.props.AppStore.loadUrbanUnits}/>
-      )};
-  if(this.props.AppStore.database.length && this.props.AppStore.urban_units.length && !this.props.AppStore.summary.length) {
-    console.log('Test: ', this.props.AppStore.converted_units)
-    return (
-      <CompareButton getSummary={this.props.AppStore.getSummary}/>
-    )};
-  if(this.props.AppStore.summary.length) {
-    return (
-      <div className='DataLoadingContainer'>
-        <Summary summary={this.props.AppStore.summary} problem_units={this.props.AppStore.problem_units} database={this.props.AppStore.database} converted_units={this.props.AppStore.converted_units} action={this.props.AppStore.resetHandler}/>
-      </div>
-    )}
-}
-
-render() {
-    return (
-      <div >
+    return useObserver(() =>(
+      <StoreProvider>
         <h1 className='title'>Program do przypisywania jednostek urbanistycznych do punktów adresowych</h1>
-        { this.renderData() }
+        { display }
         <footer>
           <p>Copyright Aleksandra Podsiadlik 2019</p>
         </footer>
-      </div>
-    );
-};
+      </StoreProvider>
+    ))
 };
 
-ReactDOM.render(<Provider AppStore={new AppStore()}><App /></Provider>, document.getElementById('app'))
+
+ReactDOM.render(<App />, document.getElementById('app'))
