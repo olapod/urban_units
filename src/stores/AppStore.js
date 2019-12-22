@@ -23,15 +23,15 @@ class AppStore {
         this.database = data;
     };
 
-    @action convertUnits() {
+    convertUnits() {
         this.converted_units = convert_urban_units(this.urban_units)
     }
 
-    @action getDataBase() {
+    getDataBase() {
         this.compared_database = compare_databases(this.database, this.converted_units)
     };
 
-    @action getProblemUnits() {
+    getProblemUnits() {
         this.problem_units = get_problem_units(this.compared_database)
     };
 

@@ -1,6 +1,8 @@
 import React from "react";
 import { CSVLink, CSVDownload } from "react-csv";
+import { observer } from 'mobx-react';
 
+@observer
 class Summary extends React.Component {
 
 render() {
