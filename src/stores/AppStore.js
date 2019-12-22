@@ -36,31 +36,12 @@ class Store {
         this.database = data;
     };
 
-    // @action convertUnits() {
-    //     this.converted_units = convert_urban_units(this.urban_units)
-    // }
-
     getDataBase = () => {
         const converted_units = convert_urban_units(this.urban_units);
-        const compared_database = compare_databases(this.database, converted_units)
-        return Promise.resolve(compared_database)
+        const compared_database = compare_databases(this.database, converted_units);
+        return Promise.resolve(compared_database);
     };
 
-    // @action getProblemUnits() {
-    //     this.problem_units = get_problem_units(this.compared_database)
-    // };
-
-    // @action getSummary() {
-    //     this.summary = get_summary(this.compared_database);
-    // }
-
-    // @action showSpinner() {
-    //   this.loading = true;
-    // }
-
-    // @action hideSpinner() {
-    //     this.loading = false;
-    // }
 
     @action getAll = () => {
         this.loading = true;
