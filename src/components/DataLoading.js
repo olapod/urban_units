@@ -1,7 +1,6 @@
 import React from "react";
 import CSVReader from 'react-csv-reader';
-
-
+import { observer } from 'mobx-react';
 
 class DataLoading extends React.Component {
   render() {
@@ -42,4 +41,4 @@ class DataLoading extends React.Component {
     )};
 };
 
-export default DataLoading;
+export default observer(DataLoading);

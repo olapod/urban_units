@@ -1,7 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { Provider } from 'mobx-react';
-import { observer, inject } from 'mobx-react'
+import { inject, observer } from 'mobx-react';
 import AppStore from './stores/AppStore';
 import DataLoading from './components/DataLoading';
 import Summary from './components/Summary';
@@ -9,7 +8,6 @@ import CompareButton from './components/CompareButton';
 import Spinner from './components/Spinner'
 
 import './App.scss';
-
 @inject('AppStore')
 @observer
 class App extends React.Component {
@@ -21,28 +19,31 @@ class App extends React.Component {
   // }
 
 renderData() {
-  if (this.props.AppStore.loading) {
+  var AppStore = this.props.AppStore;
+  if (AppStore.loading) {
     return (
       <Spinner />
     )};
-  if(!this.props.AppStore.database.length || !this.props.AppStore.urban_units.length) {
+  if(!AppStore.database.length || !AppStore.urban_units.length) {
     return (
-      <DataLoading loadDatabase={this.props.AppStore.loadDatabase} loadUrbanUnits={this.props.AppStore.loadUrbanUnits}/>
+      <DataLoading loadDatabase={AppStore.loadDatabase} loadUrbanUnits={AppStore.loadUrbanUnits}/>
       )};
-  if(this.props.AppStore.database.length && this.props.AppStore.urban_units.length && !this.props.AppStore.summary.length) {
-    console.log('Test: ', this.props.AppStore.converted_units)
+  if(AppStore.database.length && AppStore.urban_units.length && !AppStore.summary.length) {
+    console.log('Test: ', AppStore.converted_units)
     return (
-      <CompareButton getSummary={this.props.AppStore.getSummary}/>
+      <CompareButton getAll={AppStore.getAll}/>
     )};
-  if(this.props.AppStore.summary.length) {
+  if(AppStore.summary.length) {
     return (
       <div className='DataLoadingContainer'>
-        <Summary summary={this.props.AppStore.summary} problem_units={this.props.AppStore.problem_units} database={this.props.AppStore.database} converted_units={this.props.AppStore.converted_units} action={this.props.AppStore.resetHandler}/>
+        <Summary summary={AppStore.summary} problem_units={AppStore.problem_units} database={AppStore.database} converted_units={AppStore.converted_units} action={AppStore.resetHandler}/>
       </div>
     )}
 }
 
 render() {
+
+  // console.log("Check: ", AppStore.converted_units.length)
     return (
       <div >
         <h1 className='title'>Program do przypisywania jednostek urbanistycznych do punktów adresowych</h1>
@@ -55,4 +56,7 @@ render() {
 };
 };
 
-ReactDOM.render(<Provider AppStore={new AppStore()}><App /></Provider>, document.getElementById('app'))
+ReactDOM.render(
+  <App AppStore={AppStore} />,
+  document.getElementById('app')
+);
