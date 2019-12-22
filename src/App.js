@@ -19,9 +19,10 @@ class App extends React.Component {
     this.initialState = { ...this.state }
     this.resetHandler = this.resetHandler.bind(this);
     this.getSummary = this.getSummary.bind(this);
-      }
+    }
 
 loadUrbanUnits = units => {
+
 this.setState({
   urban_units: units,
 })
@@ -29,6 +30,7 @@ this.setState({
 };
 
 loadDatabase = data => {
+
   this.setState({ database: data });
 };
 
@@ -52,9 +54,9 @@ getProblemUnits() {
 
 getSummary () {
   this.setState({ loading: true });
-  this.getDataBase();
   setTimeout(() => {
-      this.setState({
+    this.getDataBase();
+    this.setState({
       loading: false,
       summary: get_summary(this.state.compared_database)
     })
