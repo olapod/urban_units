@@ -40,9 +40,11 @@ class Store {
     //     this.converted_units = convert_urban_units(this.urban_units)
     // }
 
-    // @action getDataBase() {
-    //     this.compared_database = compare_databases(this.database, this.converted_units)
-    // };
+    getDataBase = () => {
+        const converted_units = convert_urban_units(this.urban_units);
+        const compared_database = compare_databases(this.database, converted_units)
+        return Promise.resolve(compared_database)
+    };
 
     // @action getProblemUnits() {
     //     this.problem_units = get_problem_units(this.compared_database)
@@ -60,13 +62,14 @@ class Store {
     //     this.loading = false;
     // }
 
-    @action getAll = () =>{
+    @action getAll = () => {
         this.loading = true;
-        this.converted_units = convert_urban_units(this.urban_units);
-        this.compared_database = compare_databases(this.database, this.converted_units);
-        this.summary = get_summary(this.compared_database);
-        this.problem_units = get_problem_units(this.compared_database);
-        this.loading = false;
+        this.getDataBase()
+        .then(res => {
+            this.summary = get_summary(res);
+            this.problem_units = get_problem_units(res);
+            this.loading = false;
+        })
     };
 
     @action resetHandler = () => {

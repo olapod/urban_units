@@ -2,10 +2,11 @@ import React from "react";
 import { CSVLink, CSVDownload } from "react-csv";
 import { observer } from 'mobx-react';
 
+@observer
 class Summary extends React.Component {
 
 render() {
-  let { problem_units, summary, database, converted_units, action} = this.props;
+  let { problem_units, summary, database, converted_units, action} = this.props.AppStore;
 
   return (
   <div className='container'>
@@ -46,4 +47,4 @@ render() {
   </div>
 )}
 }
-export default observer(Summary);
+export default Summary;

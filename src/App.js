@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { inject, observer } from 'mobx-react';
+import { observer } from 'mobx-react';
 import AppStore from './stores/AppStore';
 import DataLoading from './components/DataLoading';
 import Summary from './components/Summary';
@@ -8,8 +8,9 @@ import CompareButton from './components/CompareButton';
 import Spinner from './components/Spinner'
 
 import './App.scss';
-@inject('AppStore')
+
 @observer
+
 class App extends React.Component {
 
   // constructor(props) {
@@ -19,24 +20,24 @@ class App extends React.Component {
   // }
 
 renderData() {
-  var AppStore = this.props.AppStore;
+
   if (AppStore.loading) {
     return (
       <Spinner />
     )};
   if(!AppStore.database.length || !AppStore.urban_units.length) {
     return (
-      <DataLoading loadDatabase={AppStore.loadDatabase} loadUrbanUnits={AppStore.loadUrbanUnits}/>
+      <DataLoading AppStore={AppStore}/>
       )};
   if(AppStore.database.length && AppStore.urban_units.length && !AppStore.summary.length) {
-    console.log('Test: ', AppStore.converted_units)
+    console.log('Test: ', AppStore.urban_units)
     return (
-      <CompareButton getAll={AppStore.getAll}/>
+      <CompareButton AppStore={AppStore}/>
     )};
   if(AppStore.summary.length) {
     return (
       <div className='DataLoadingContainer'>
-        <Summary summary={AppStore.summary} problem_units={AppStore.problem_units} database={AppStore.database} converted_units={AppStore.converted_units} action={AppStore.resetHandler}/>
+        <Summary AppStore={AppStore}/>
       </div>
     )}
 }
@@ -57,6 +58,5 @@ render() {
 };
 
 ReactDOM.render(
-  <App AppStore={AppStore} />,
-  document.getElementById('app')
+  <App/>, document.getElementById('app')
 );
