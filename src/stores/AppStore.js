@@ -11,11 +11,12 @@ class Store {
     @observable summary;
     @observable problem_units;
     @observable loading;
-    @observable converted_units;
-    @observable compared_database;
-    @observable initialState;
+    // @observable converted_units;
+    // @observable compared_database;
+    // @observable initialState;
 
     constructor() {
+
         this.urban_units = [];
         this.database = [];
         this.summary = [];
@@ -53,9 +54,9 @@ class Store {
         })
     };
 
-    @action resetHandler = () => {
-        this.initialState;
-    };
+    // @action resetHandler = () => {
+    //     this.initialState;
+    // };
 }
 const AppStore = new Store();
 
