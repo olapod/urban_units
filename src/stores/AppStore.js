@@ -1,9 +1,10 @@
 import { action, computed, observable } from "mobx"
-import convert_urban_units from '../logic/UnitsContainer';
-import compare_databases from '../logic/DatabaseContainer';
-import get_summary from '../logic/SummaryContainer';
-import get_problem_units from '../logic/ProblemUnitsContainer';
-;
+// import convert_urban_units from '../logic/UnitsContainer';
+// import compare_databases from '../logic/DatabaseContainer';
+// import get_summary from '../logic/SummaryContainer';
+// import get_problem_units from '../logic/ProblemUnitsContainer';
+import WebWorkerEnabler from './WebWorkerEnabler.js';
+import WebWorker from './WebWorker.js';
 
 class Store {
     constructor () {
@@ -15,16 +16,14 @@ class Store {
     @observable summary
     @observable problem_units
     @observable loading
-    // @observable converted_units;
-    // @observable compared_database;
-    // @observable initialState;
-
+    @observable converted_units;
 
     @action resetState = () => {
         this.urban_units = [];
         this.database = [];
         this.summary = [];
         this.problem_units = [];
+        this.converted_units = [];
         this.loading = false;
     };
 
@@ -36,19 +35,19 @@ class Store {
         this.database = data;
     };
 
-    getDataBase = () => {
-        const converted_units = convert_urban_units(this.urban_units);
-        return compare_databases(this.database, converted_units);
-
-    };
-
-
     @action getAll = () => {
         this.loading = true;
-        const res = this.getDataBase()
-        this.summary = get_summary(res);
-        this.problem_units = get_problem_units(res);
-        this.loading = false;
+        this.worker = new WebWorkerEnabler(WebWorker);
+        this.worker.postMessage({urban_units: JSON.parse(JSON.stringify(this.urban_units)),
+                                database: JSON.parse(JSON.stringify(this.database))})
+        this.worker.addEventListener('message', (event) => {
+            const { data } = event;
+            this.summary = data.summary;
+            this.problem_units = data.problem_units;
+            this.converted_units = data.converted_units;
+            this.loading = false;
+          })
+
     };
 };
 

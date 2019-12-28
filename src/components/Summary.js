@@ -6,7 +6,7 @@ import { observer } from 'mobx-react';
 class Summary extends React.Component {
 
 render() {
-  let { problem_units, summary, database, converted_units, action} = this.props.AppStore;
+  let { problem_units, summary, database, converted_units, resetState} = this.props.AppStore;
 
   return (
   <div className='container'>
@@ -38,10 +38,10 @@ render() {
       <div className='upload_links'>
         <CSVLink data={summary} filename={"wynik_porownania.csv"}><button className='upload_button'>Pobierz wynik porównania</button></CSVLink><br/>
         <CSVLink data={problem_units} filename={"rekordy_nieprzypisane_do_jednostek.csv"}><button className='upload_button'>Pobierz listę nieprzypisanych rekordów do jednostek</button></CSVLink><br/>
-        {/* <CSVLink data={converted_units} filename={"skonwertowana_baza_jednostek.csv"}><button className='upload_button'>Pobierz skonwertowaną bazę jednostek</button> </CSVLink> */}
+        <CSVLink data={converted_units} filename={"skonwertowana_baza_jednostek.csv"}><button className='upload_button'>Pobierz skonwertowaną bazę jednostek</button> </CSVLink>
       </div>
       <div className='reset'>
-        <button onClick={action} className='button_reset button'>Porównaj ponownie</button>
+        <button onClick={resetState} className='button_reset button'>Porównaj ponownie</button>
       </div>
     </div>
   </div>

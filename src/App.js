@@ -30,7 +30,6 @@ renderData() {
       <DataLoading AppStore={AppStore}/>
       )};
   if(AppStore.database.length && AppStore.urban_units.length && !AppStore.summary.length) {
-    console.log('Test: ', AppStore.urban_units)
     return (
       <CompareButton AppStore={AppStore}/>
     )};
@@ -44,7 +43,6 @@ renderData() {
 
 render() {
 
-  // console.log("Check: ", AppStore.converted_units.length)
     return (
       <div >
         <h1 className='title'>Program do przypisywania jednostek urbanistycznych do punktów adresowych</h1>
