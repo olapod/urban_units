@@ -6,31 +6,30 @@ import get_problem_units from '../logic/ProblemUnitsContainer';
 ;
 
 class Store {
-    @observable urban_units;
-    @observable database;
-    @observable summary;
-    @observable problem_units;
-    @observable loading;
+    constructor () {
+        this.resetState()
+    }
+
+    @observable urban_units
+    @observable database
+    @observable summary
+    @observable problem_units
+    @observable loading
     // @observable converted_units;
     // @observable compared_database;
     // @observable initialState;
 
-    constructor() {
 
+    @action resetState = () => {
         this.urban_units = [];
         this.database = [];
         this.summary = [];
         this.problem_units = [];
         this.loading = false;
-        this.converted_units = []
-        this.compared_database = [];
-        this.initialState = { ...this }
-
-    }
+    };
 
     @action loadUrbanUnits = units => {
         this.urban_units = units;
-
     };
 
     @action loadDatabase = data => {
@@ -39,27 +38,22 @@ class Store {
 
     getDataBase = () => {
         const converted_units = convert_urban_units(this.urban_units);
-        const compared_database = compare_databases(this.database, converted_units);
-        return Promise.resolve(compared_database);
+        return compare_databases(this.database, converted_units);
+
     };
 
 
     @action getAll = () => {
         this.loading = true;
-        this.getDataBase()
-        .then(res => {
-            this.summary = get_summary(res);
-            this.problem_units = get_problem_units(res);
-            this.loading = false;
-        })
+        const res = this.getDataBase()
+        this.summary = get_summary(res);
+        this.problem_units = get_problem_units(res);
+        this.loading = false;
     };
+};
 
-    // @action resetHandler = () => {
-    //     this.initialState;
-    // };
-}
-const AppStore = new Store();
+const appStore = new Store();
 
-export default AppStore;
+export default appStore;
 
 
