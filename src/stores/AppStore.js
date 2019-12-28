@@ -1,8 +1,4 @@
 import { action, computed, observable } from "mobx"
-// import convert_urban_units from '../logic/UnitsContainer';
-// import compare_databases from '../logic/DatabaseContainer';
-// import get_summary from '../logic/SummaryContainer';
-// import get_problem_units from '../logic/ProblemUnitsContainer';
 import WebWorkerEnabler from './WebWorkerEnabler.js';
 import WebWorker from './WebWorker.js';
 
