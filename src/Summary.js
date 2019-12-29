@@ -1,12 +1,10 @@
 import React from "react";
 import { CSVLink, CSVDownload } from "react-csv";
-import { observer } from 'mobx-react';
 
-@observer
 class Summary extends React.Component {
 
 render() {
-  let { problem_units, summary, database, converted_units, resetState} = this.props.AppStore;
+  let { problem_units, summary, database, converted_units, action} = this.props;
 
   return (
   <div className='container'>
@@ -41,7 +39,7 @@ render() {
         <CSVLink data={converted_units} filename={"skonwertowana_baza_jednostek.csv"}><button className='upload_button'>Pobierz skonwertowaną bazę jednostek</button> </CSVLink>
       </div>
       <div className='reset'>
-        <button onClick={resetState} className='button_reset button'>Porównaj ponownie</button>
+        <button onClick={action} className='button_reset button'>Porównaj ponownie</button>
       </div>
     </div>
   </div>

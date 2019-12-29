@@ -1,16 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { observer } from 'mobx-react';
-import AppStore from './stores/AppStore';
-import DataLoading from './components/DataLoading';
-import Summary from './components/Summary';
-import CompareButton from './components/CompareButton';
-import Spinner from './components/Spinner';
-import Error from './components/Error';
-
+import DataLoading from './DataLoading';
+import Summary from './Summary';
+import CompareButton from './CompareButton';
+import Spinner from './Spinner'
+import convert_urban_units from './UnitsContainer';
+import compare_databases from './DatabaseContainer';
+import get_summary from './SummaryContainer';
+import get_problem_units from './ProblemUnitsContainer';
 import './App.scss';
 
-@observer
 
 class App extends React.Component {
 
@@ -70,44 +69,39 @@ resetHandler() {
   this.setState(this.initialState);
   };
 
-    if (AppStore.loading) {
-      return (
-        <Spinner AppStore={AppStore}/>
+renderData() {
+  if (this.state.loading) {
+    return (
+      <Spinner />
+    )};
+  if(!this.state.database.length || !this.state.urban_units.length) {
+    return (
+      <DataLoading loadDatabase={this.loadDatabase} loadUrbanUnits={this.loadUrbanUnits}/>
       )};
-    if (AppStore.error) {
-      return (
-         <Error />
-      )};
-    if(!AppStore.loading && (!AppStore.database.length || !AppStore.urban_units.length)) {
-      return (
-        <DataLoading AppStore={AppStore}/>
-        )};
-    if(AppStore.database.length && AppStore.urban_units.length && !AppStore.summary.length) {
-      return (
-        <CompareButton AppStore={AppStore}/>
-      )};
-    if(AppStore.summary.length) {
-      return (
-        <div className='DataLoadingContainer'>
-          <Summary AppStore={AppStore}/>
-        </div>
-      )}
-  }
+  if(this.state.database.length && this.state.urban_units.length && !this.state.summary.length) {
+    return (
+      <CompareButton getSummary={this.getSummary}/>
+    )};
+  if(this.state.summary.length) {
+    return (
+      <div className='DataLoadingContainer'>
+        <Summary summary={this.state.summary} problem_units={this.state.problem_units} database={this.state.database} converted_units={this.state.converted_units} action={this.resetHandler}/>
+      </div>
+    )}
+}
 
-  render() {
-
-      return (
-        <div >
-          <h1 className='title'>Program do przypisywania jednostek urbanistycznych do punktów adresowych</h1>
-          { this.renderData() }
-          <footer>
-            <p>Copyright Aleksandra Podsiadlik 2019</p>
-          </footer>
-        </div>
-      );
-  };
+render() {
+    return (
+      <div >
+        <h1 className='title'>Program do przypisywania jednostek urbanistycznych do punktów adresowych</h1>
+        { this.renderData() }
+        <footer>
+          <p>Copyright Aleksandra Podsiadlik 2019</p>
+        </footer>
+      </div>
+    );
+};
 };
 
-ReactDOM.render(
-  <App/>, document.getElementById('app')
-);
+export default App;
+ReactDOM.render(<App />, document.getElementById("app"));

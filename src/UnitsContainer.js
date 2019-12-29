@@ -1,4 +1,4 @@
-export default function convert_urban_units(urban_units) {
+const convert_urban_units = (urban_units) => {
 
   //SFORMATOWANIE BAZY JEDNOSTEK URBANISTYCZNYCH
 
@@ -188,4 +188,4 @@ export default function convert_urban_units(urban_units) {
   return fixed_units;
 }
 
-// export default convert_urban_units;
+export default convert_urban_units;
