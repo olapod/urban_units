@@ -1,10 +1,10 @@
 import { action, computed, observable } from "mobx"
-import WebWorkerEnabler from './WebWorkerEnabler.js';
-import WebWorker from './WebWorker.js';
+import Worker from "../file.worker";
 
 class Store {
     constructor () {
-        this.resetState()
+        this.resetState();
+        this.worker = new Worker();
     }
 
     @observable urban_units
@@ -13,6 +13,7 @@ class Store {
     @observable problem_units
     @observable loading
     @observable converted_units;
+    @observable error;
 
     @action resetState = () => {
         this.urban_units = [];
@@ -21,6 +22,7 @@ class Store {
         this.problem_units = [];
         this.converted_units = [];
         this.loading = false;
+        this.error = false;
     };
 
     @action loadUrbanUnits = units => {
@@ -31,11 +33,14 @@ class Store {
         this.database = data;
     };
 
-    @action getAll = () => {
+    @action errorHandle = () => {
+        this.error = true;
+
+    };
+
+     @action getAll = () => {
         this.loading = true;
-        this.worker = new WebWorkerEnabler(WebWorker);
-        this.worker.postMessage({urban_units: JSON.parse(JSON.stringify(this.urban_units)),
-                                database: JSON.parse(JSON.stringify(this.database))})
+        this.worker.postMessage({urban_units: JSON.parse(JSON.stringify(this.urban_units)), database: JSON.parse(JSON.stringify(this.database))});
         this.worker.addEventListener('message', (event) => {
             const { data } = event;
             this.summary = data.summary;

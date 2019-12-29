@@ -5,7 +5,8 @@ import AppStore from './stores/AppStore';
 import DataLoading from './components/DataLoading';
 import Summary from './components/Summary';
 import CompareButton from './components/CompareButton';
-import Spinner from './components/Spinner'
+import Spinner from './components/Spinner';
+import Error from './components/Error';
 
 import './App.scss';
 
@@ -13,46 +14,44 @@ import './App.scss';
 
 class App extends React.Component {
 
-  // constructor(props) {
-  //   super(props);
-  //   this.resetHandler = this.resetHandler.bind(this);
-  //   this.getSummary = this.getSummary.bind(this);
-  // }
+  renderData() {
 
-renderData() {
-
-  if (AppStore.loading) {
-    return (
-      <Spinner />
-    )};
-  if(!AppStore.database.length || !AppStore.urban_units.length) {
-    return (
-      <DataLoading AppStore={AppStore}/>
+    if (AppStore.loading) {
+      return (
+        <Spinner AppStore={AppStore}/>
       )};
-  if(AppStore.database.length && AppStore.urban_units.length && !AppStore.summary.length) {
-    return (
-      <CompareButton AppStore={AppStore}/>
-    )};
-  if(AppStore.summary.length) {
-    return (
-      <div className='DataLoadingContainer'>
-        <Summary AppStore={AppStore}/>
-      </div>
-    )}
-}
+    if (AppStore.error) {
+      return (
+         <Error />
+      )};
+    if(!AppStore.loading && (!AppStore.database.length || !AppStore.urban_units.length)) {
+      return (
+        <DataLoading AppStore={AppStore}/>
+        )};
+    if(AppStore.database.length && AppStore.urban_units.length && !AppStore.summary.length) {
+      return (
+        <CompareButton AppStore={AppStore}/>
+      )};
+    if(AppStore.summary.length) {
+      return (
+        <div className='DataLoadingContainer'>
+          <Summary AppStore={AppStore}/>
+        </div>
+      )}
+  }
 
-render() {
+  render() {
 
-    return (
-      <div >
-        <h1 className='title'>Program do przypisywania jednostek urbanistycznych do punktów adresowych</h1>
-        { this.renderData() }
-        <footer>
-          <p>Copyright Aleksandra Podsiadlik 2019</p>
-        </footer>
-      </div>
-    );
-};
+      return (
+        <div >
+          <h1 className='title'>Program do przypisywania jednostek urbanistycznych do punktów adresowych</h1>
+          { this.renderData() }
+          <footer>
+            <p>Copyright Aleksandra Podsiadlik 2019</p>
+          </footer>
+        </div>
+      );
+  };
 };
 
 ReactDOM.render(
