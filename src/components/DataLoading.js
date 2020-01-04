@@ -36,7 +36,7 @@ class DataLoading extends React.Component {
               onError={this.props.AppStore.errorHandle.bind(this)}
             />
             <h4>Plik powinien zawierać kolumnę o nazwię "ulica" oraz kolumnę o nazwie "numer".</h4>
-            <h4>Ulice powinny mieć nazwę dokładnie taką samą jak w bazie jednostek urbanistycznych!!!</h4>
+            <h4>Ulice powinny mieć nazwy dokładnie takie same jak w bazie jednostek urbanistycznych!!!</h4>
             <h4>Wielkość liter nie ma znaczenia.</h4>
           </div>
         </div>

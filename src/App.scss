@@ -132,12 +132,13 @@ input {
     background-color: rgb(216, 117, 35);
 }
 
-.button_compare {
+.button_compare, .error_button {
     margin: auto;
 }
 
 .reset {
     margin-left: 10px;
+
 .button_reset {
     margin-top: 20px;
 }
@@ -158,5 +159,9 @@ input {
 .upload_links {
     display: inline-block;
     padding: 10px;
+}
+
+.error {
+    text-align: center;
 }
 

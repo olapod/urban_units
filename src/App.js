@@ -20,9 +20,9 @@ class App extends React.Component {
       return (
         <Spinner AppStore={AppStore}/>
       )};
-    if (AppStore.error) {
+    if (AppStore.error || (AppStore.database.length && (!AppStore.database[0].ulica || !AppStore.database[0].numer)) || (AppStore.urban_units.length && (!AppStore.urban_units[0].ULICA || !AppStore.urban_units[0].JEDNOSTKA_URBANISTYCZNA))) {
       return (
-         <Error />
+         <Error AppStore={AppStore}/>
       )};
     if(!AppStore.loading && (!AppStore.database.length || !AppStore.urban_units.length)) {
       return (
@@ -41,7 +41,6 @@ class App extends React.Component {
   }
 
   render() {
-
       return (
         <div >
           <h1 className='title'>Program do przypisywania jednostek urbanistycznych do punktów adresowych</h1>
