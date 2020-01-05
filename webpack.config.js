@@ -32,6 +32,10 @@ module.exports = {
       {
         test: /\.worker\.js$/,
         use: { loader: 'worker-loader' }
+      },
+      {
+        test: /\.(woff(2)?|ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        loader: "file-loader"
       }
     ]
   },
@@ -44,5 +48,6 @@ module.exports = {
       filename: "[name].css",
       chunkFilename: "[id].css"
     })
-  ]
+  ],
+
 };

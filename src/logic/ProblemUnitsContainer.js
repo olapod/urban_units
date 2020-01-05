@@ -5,7 +5,7 @@ const get_problem_units = (database) => {
       problem_units.push(database[i]);
     }
   }
-// console.log('Problem: ', problem_units[10])
+
   return problem_units;
 };
 

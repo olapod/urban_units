@@ -1,13 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { observer } from 'mobx-react';
+import { observer, Provider } from 'mobx-react';
 import AppStore from './stores/AppStore';
 import DataLoading from './components/DataLoading';
 import Summary from './components/Summary';
 import CompareButton from './components/CompareButton';
 import Spinner from './components/Spinner';
 import Error from './components/Error';
-
+import './fonts/index.scss';
 import './App.scss';
 
 @observer
@@ -20,7 +20,7 @@ class App extends React.Component {
       return (
         <Spinner AppStore={AppStore}/>
       )};
-    if (AppStore.error || (AppStore.database.length && (!AppStore.database[0].ulica || !AppStore.database[0].numer)) || (AppStore.urban_units.length && (!AppStore.urban_units[0].ULICA || !AppStore.urban_units[0].JEDNOSTKA_URBANISTYCZNA))) {
+    if (AppStore.error || (AppStore.database.length && (!AppStore.database[0].hasOwnProperty('ulica') || !AppStore.database[0].hasOwnProperty('numer'))) || (AppStore.urban_units.length && (!AppStore.urban_units[0].hasOwnProperty('ULICA') || !AppStore.urban_units[0].hasOwnProperty('JEDNOSTKA_URBANISTYCZNA')))) {
       return (
          <Error AppStore={AppStore}/>
       )};
@@ -42,6 +42,7 @@ class App extends React.Component {
 
   render() {
       return (
+        <Provider AppStore={AppStore}>
         <div >
           <h1 className='title'>Program do przypisywania jednostek urbanistycznych do punktów adresowych</h1>
           { this.renderData() }
@@ -49,6 +50,7 @@ class App extends React.Component {
             <p>Copyright Aleksandra Podsiadlik 2019</p>
           </footer>
         </div>
+        </Provider>
       );
   };
 };

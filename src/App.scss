@@ -165,3 +165,36 @@ input {
     text-align: center;
 }
 
+input[type="file"] {
+    display: none;
+}
+
+// .csv-reader-input {
+//     width: 0.1px;
+// 	height: 0.1px;
+// 	opacity: 0;
+// 	overflow: hidden;
+// 	position: absolute;
+// 	z-index: -1;
+// }
+
+// .custom-file-upload {
+//     border: 1px solid #ccc;
+//     display: inline-block;
+//     padding: 6px 12px;
+//     cursor: pointer;
+// }
+
+// .csv-reader-input + .custom-file-upload {
+//     font-size: 1.25em;
+//     font-weight: 700;
+//     color: white;
+//     background-color: black;
+//     display: inline-block;
+//     cursor: pointer;
+// }
+
+// .csv-reader-input:focus + .custom-file-upload,
+// .csv-reader-input + .custom-file-upload:hover {
+//     background-color: red;
+// }
