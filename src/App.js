@@ -2,11 +2,13 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { observer, Provider } from 'mobx-react';
 import AppStore from './stores/AppStore';
+import AppTitle from './components/AppTitle'
 import DataLoading from './components/DataLoading';
 import Summary from './components/Summary';
-import CompareButton from './components/CompareButton';
 import Spinner from './components/Spinner';
 import Error from './components/Error';
+import Container from '@material-ui/core/Container';
+
 import './fonts/index.scss';
 import './App.scss';
 
@@ -24,14 +26,10 @@ class App extends React.Component {
       return (
          <Error AppStore={AppStore}/>
       )};
-    if(!AppStore.loading && (!AppStore.database.length || !AppStore.urban_units.length)) {
+    if(!AppStore.loading && !AppStore.summary.length) {
       return (
         <DataLoading AppStore={AppStore}/>
         )};
-    if(AppStore.database.length && AppStore.urban_units.length && !AppStore.summary.length) {
-      return (
-        <CompareButton AppStore={AppStore}/>
-      )};
     if(AppStore.summary.length) {
       return (
         <div className='DataLoadingContainer'>
@@ -43,13 +41,13 @@ class App extends React.Component {
   render() {
       return (
         <Provider AppStore={AppStore}>
-        <div >
-          <h1 className='title'>Program do przypisywania jednostek urbanistycznych do punktów adresowych</h1>
+        <Container  maxWidth='lg'>
+        <AppTitle />
           { this.renderData() }
           <footer>
             <p>Copyright Aleksandra Podsiadlik 2019</p>
           </footer>
-        </div>
+        </Container>
         </Provider>
       );
   };

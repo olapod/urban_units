@@ -23,6 +23,7 @@ class Store {
         this.converted_units = [];
         this.loading = false;
         this.error = false;
+
     };
 
     @action loadUrbanUnits = units => {

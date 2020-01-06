@@ -1,6 +1,6 @@
 import React from "react";
 import { css } from "@emotion/core";
-import { BeatLoader } from "react-spinners";
+import { SyncLoader } from "react-spinners";
 
 // Can be a string as well. Need to ensure each key-value pair ends with ;
 const override = css`
@@ -13,12 +13,12 @@ class Spinner extends React.Component {
 render() {
       return (
         <div className="DataLoadingContainer spinner">
-        <h3 className="spinner-title">Wczytuję dane....</h3>
-        <BeatLoader
+        <SyncLoader
           css={override}
-          size={30}
-          color={"#d87523"}
+          size={50}
+          color={"#3f51b5"}
         />
+        <h3 className="spinner-title">Porównuję bazy danych....</h3>
       </div>
     )};
 

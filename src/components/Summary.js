@@ -12,6 +12,7 @@ render() {
   <div className='container'>
     <div className='summary-container'>
       <h3>Wynik porównania baz danych:</h3>
+
       <table className="summary_table">
         <thead>
           <tr>

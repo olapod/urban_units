@@ -1,9 +1,10 @@
 import React from "react";
-import CSVReader from 'react-csv-reader';
+
 import { observer } from 'mobx-react';
 import DataUploadingUnits from './DataUploadingUnits';
 import DataUploadingDatabase from './DataUploadingDatabase';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
+import Button from '@material-ui/core/Button';
 
 @observer
 class DataLoading extends React.Component {
@@ -12,11 +13,13 @@ class DataLoading extends React.Component {
 
     if (!this.props.AppStore.database.length) {
       return (
+        <div className='button_container'>
         <DataUploadingDatabase />
+        </div>
       )};
     if (this.props.AppStore.database.length) {
         return (
-          <div>
+          <div className='button_container'>
           <CheckCircleIcon style={{ fill: 'green', fontSize: 80 }}/>
           <p>Plik z bazą wgrano poprawnie.</p>
           </div>
@@ -27,11 +30,13 @@ class DataLoading extends React.Component {
 
     if (!this.props.AppStore.urban_units.length) {
       return (
+        <div className='button_container'>
          <DataUploadingUnits />
+         </div>
       )};
     if (this.props.AppStore.urban_units.length) {
         return (
-          <div>
+          <div className='button_container'>
           <CheckCircleIcon style={{ fill: 'green', fontSize: 80 }}/>
           <p>Plik z jednostkami wgrano poprawnie.</p>
           </div>
@@ -41,6 +46,7 @@ class DataLoading extends React.Component {
   }
 
   render() {
+    const isEnabled = this.props.AppStore.urban_units.length > 0 && this.props.AppStore.database.length > 0;
   return (
     <div className='DataLoadingContainer'>
       <div className='csv_title'>
@@ -51,7 +57,14 @@ class DataLoading extends React.Component {
         <div className='container'>
         { this.renderUnits() }
         { this.renderDatabase() }
+        <div>
 
+        </div>
+        </div>
+        <div className='button_container'>
+        <Button variant="contained" disabled={!isEnabled} color='primary'onClick={this.props.AppStore.getAll}>
+          Porównaj bazy
+        </Button>
         </div>
       </div>
     )};

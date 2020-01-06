@@ -1,14 +1,11 @@
 * {
-    margin: 0;
+    margin: 20px;
     padding: 0;
     box-sizing: border-box;
 }
 
 body {
-    background-color: burlywood;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    margin: 20px;
-
+    background-color: rgb(245,245,245);
 }
 
 footer {
@@ -46,7 +43,7 @@ ul {
     padding: 20px;
 }
 
-.csv_title {
+.csv_title, .button_container {
     text-align: center;
     padding: 20px;
 }
