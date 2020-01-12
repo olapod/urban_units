@@ -15,7 +15,7 @@ import get_problem_units from './logic/ProblemUnitsContainer';
       const compared_databases = compare_databases(data, converted_units);
       console.timeEnd('function_2');
       console.time('function_3');
-      const summary = get_summary(compared_databases);
+      const summary = get_summary(compared_databases, converted_units);
       console.timeEnd('function_3');
       console.time('function_4');
       const problem_units = get_problem_units(compared_databases);

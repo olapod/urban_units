@@ -7,6 +7,7 @@ export default function convert_urban_units(urban_units) {
   //tworzenie poprawionej tablicy z obiektami bazy
   var streets = [];
   var numbers = [];
+  var districts = [];
 
   //czyszczenie bazy z pustych rekordów
   for(var i=0; i < urban_units.length; i++) {
@@ -21,7 +22,6 @@ export default function convert_urban_units(urban_units) {
       streets.push(urban_units[key].ULICA);
     }
   };
-
   //usunucięcie zbędnych spacji i zamiana nazw na małe litery, usunięcie opisów dot. numerów
   for(var i=0; i < streets.length; i++) {
     streets[i] = streets[i].replace(/(?<=([A-ZŻŹĆĄŚĘŁÓŃ][a-zżźćńółęąś]*))((\s\d|\sparzyste|\snieparzyste|\sza wyjątkiem).*)/g, '');

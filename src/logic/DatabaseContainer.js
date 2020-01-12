@@ -28,6 +28,7 @@ console.timeEnd('compare_function_1');
     for (var i = 0; i < fixed_units.length; i++) {
       if (fixed_units[i].ULICA === database[k].ulica && fixed_units[i].NUMERY === Infinity) {
         database[k].jednostka = fixed_units[i].JEDNOSTKA_URBANISTYCZNA;
+        database[k].jednostka = fixed_units[i].JEDNOSTKA_URBANISTYCZNA;
       }
 
       if (fixed_units[i].ULICA === database[k].ulica && Array.isArray(fixed_units[i].NUMERY) && fixed_units[i].NUMERY.includes(database[k].numer)) {

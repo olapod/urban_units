@@ -22,6 +22,11 @@ class DataLoading extends React.Component {
           <div className='button_container'>
           <CheckCircleIcon style={{ fill: 'green', fontSize: 80 }}/>
           <p>Plik z bazą wgrano poprawnie.</p>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
           </div>
         )};
        }

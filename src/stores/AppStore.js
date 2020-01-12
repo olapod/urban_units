@@ -1,3 +1,4 @@
+
 import { action, computed, observable } from "mobx"
 import Worker from "../file.worker";
 
@@ -7,6 +8,21 @@ class Store {
         this.worker = new Worker();
     }
 
+//     var defaultSortBy = "bunit";
+//     var defaultSortOrder = "asc";
+//     var sortedItems = this.sortData(defaultSortBy, defaultSortOrder, data.rows);
+//     this.state = {
+//       data: {
+//         ...data,
+//         rows: sortedItems
+//       },
+//       sortBy: defaultSortBy, // default sort column
+//       sortOrder: defaultSortOrder // default sort oder
+//     };
+//   }
+
+
+
     @observable urban_units
     @observable database
     @observable summary
@@ -14,6 +30,7 @@ class Store {
     @observable loading
     @observable converted_units;
     @observable error;
+
 
     @action resetState = () => {
         this.urban_units = [];
