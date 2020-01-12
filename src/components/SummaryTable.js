@@ -13,13 +13,13 @@ import TableSortLabel from '@material-ui/core/TableSortLabel';
 
 const styles = theme => ({
   table: {
-    maxWidth: 400,
+    maxWidth: 500,
   },
   cell: {
     padding: 6,
   },
   paper: {
-    width: 450,
+    width: 550,
   }
 });
 
@@ -59,7 +59,7 @@ class SummaryTable extends React.Component {
 
   render() {
   let { summary } = this.props.AppStore;
-  console.log(summary);
+
   return (
     <TableContainer  className={this.props.classes.paper} component={Paper} >
       <Table className={this.props.classes.table} size="small" aria-label="a dense table">
@@ -83,15 +83,15 @@ class SummaryTable extends React.Component {
 
               {/* </TableSortLabel> */}
             </TableCell>
-            {/* <TableCell className={this.props.classes.cell} align="center">Nazwa osiedla
+            <TableCell className={this.props.classes.cell} align="center">Nazwa osiedla
               {/* <TableSortLabel
                   active={props.sortBy === "bcount"}
                   direction={props.sortOrder}
                   onClick={props.requestSort("bcount")}
-                > */}
+                >
 
-              {/* </TableSortLabel> */}
-            {/* </TableCell>  */}
+              </TableSortLabel> */}
+            </TableCell>
 
           </TableRow>
         </TableHead>
@@ -100,7 +100,7 @@ class SummaryTable extends React.Component {
             <TableRow key={row.id}>
               <TableCell className={this.props.classes.cell} align="center">{row.id}</TableCell>
               <TableCell className={this.props.classes.cell} align="center">{row.count}</TableCell>
-              {/* <TableCell className={this.props.classes.cell} align="center">{row.district}</TableCell> */}
+              <TableCell className={this.props.classes.cell} align="center">{row.district}</TableCell>
             </TableRow>
           ))}
         </TableBody>

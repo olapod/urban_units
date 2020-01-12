@@ -12,13 +12,14 @@ class Spinner extends React.Component {
 
 render() {
       return (
-        <div className="DataLoadingContainer spinner">
+        <div className="spinner">
+          <h3 className="spinner-title">Porównuję bazy danych....</h3>
         <SyncLoader
           css={override}
           size={50}
           color={"#3f51b5"}
         />
-        <h3 className="spinner-title">Porównuję bazy danych....</h3>
+
       </div>
     )};
 

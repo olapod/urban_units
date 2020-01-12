@@ -6,6 +6,7 @@
 
 body {
     background-color: rgb(245,245,245);
+    min-height: 70vh;
 }
 
 footer {
@@ -22,10 +23,6 @@ ul {
     text-decoration: none;
   }
 
-.DataLoadingContainer {
-    min-height: 70vh;
-}
-
 .container {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -38,6 +35,9 @@ ul {
     padding: 20px;
     background-color: rgb(216, 117, 35);
 }
+.data_loading {
+    min-height: 70vh;
+}
 
 .csv {
     padding: 20px;
@@ -45,18 +45,26 @@ ul {
 
 .csv_title, .button_container {
     text-align: center;
-//     padding: 20px;
+    margin-top: 40px;
+}
+
+.button_container {
+    text-align: center;
 }
 
 .spinner {
     text-align: center;
+    margin-top: 40px;
+    min-height: 70vh;
     .spinner-title {
+        margin-top: 40px;
         margin-bottom: 40px;
     }
 }
 
-.table-title {
-    padding-left: 40px;
+.summary-container {
+    // padding-left: 40px;
+    text-align: center;
 }
 
 .summary_text {
@@ -93,7 +101,9 @@ ul {
 }
 
 .error {
+    margin-top: 40px;
     text-align: center;
+    min-height: 70vh;
 }
 
 input[type="file"] {

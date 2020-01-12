@@ -53,7 +53,7 @@ class DataLoading extends React.Component {
   render() {
     const isEnabled = this.props.AppStore.urban_units.length > 0 && this.props.AppStore.database.length > 0;
   return (
-    <div className='DataLoadingContainer'>
+    <div className='data_loading'>
       <div className='csv_title'>
         <h3>Wgranie plików do porównania</h3>
         <p>W celu uzyskania polskich znaków pliki powinny być kodowane w formacie UTF-8</p>

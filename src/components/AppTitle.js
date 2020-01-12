@@ -8,7 +8,7 @@ const useStyles = makeStyles({
 
     padding: 20,
     fontSize: 32,
-    margin: 40,
+    marginTop: 40,
     textAlign: "center"
   },
 });

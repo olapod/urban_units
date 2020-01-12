@@ -8,7 +8,7 @@ class Error extends React.Component {
 
     render() {
         return (
-            <div className="DataLoadingContainer error">
+            <div className="error">
                 <ErrorIcon style={{ fill: 'red', fontSize: 80 }}/>
                 <h4 className="error-title">Błąd. Coś poszło nie tak....</h4>
                 <p>Prawdopodobnie wgrano zły format danych.</p>

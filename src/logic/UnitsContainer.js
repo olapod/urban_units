@@ -7,7 +7,6 @@ export default function convert_urban_units(urban_units) {
   //tworzenie poprawionej tablicy z obiektami bazy
   var streets = [];
   var numbers = [];
-  var districts = [];
 
   //czyszczenie bazy z pustych rekordów
   for(var i=0; i < urban_units.length; i++) {

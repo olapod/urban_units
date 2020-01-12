@@ -3,7 +3,6 @@ import compare_databases from './logic/DatabaseContainer';
 import get_summary from './logic/SummaryContainer';
 import get_problem_units from './logic/ProblemUnitsContainer';
 
-
   self.addEventListener('message', e => { // eslint-disable-line no-restricted-globals
       if (!e) return;
       const units = e.data.urban_units;

@@ -9,7 +9,7 @@ class Summary extends React.Component {
 
 render() {
   let { problem_units, summary, database, converted_units, resetState} = this.props.AppStore;
-console.log(converted_units)
+
   return (
   <div className='container'>
     <div className='summary-container'>
