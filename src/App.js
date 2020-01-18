@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { observer, Provider } from 'mobx-react';
 import AppStore from './stores/AppStore';
-import AppTitle from './components/AppTitle'
+import AppTitle from './components/AppTitle';
 import DataLoading from './components/DataLoading';
 import Summary from './components/Summary';
 import Spinner from './components/Spinner';
@@ -40,7 +40,7 @@ class App extends React.Component {
 
   render() {
       return (
-        <Provider AppStore={AppStore}>
+        <Provider appStore={new AppStore()} >
         <Container  maxWidth='lg'>
         <AppTitle />
           { this.renderData() }

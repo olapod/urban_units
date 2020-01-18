@@ -1,6 +1,7 @@
 import React from "react";
 import { observer, inject } from 'mobx-react';
 import AppStore from '../stores/AppStore';
+import TableStore from '../stores/TableStore';
 import { withStyles } from '@material-ui/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -26,13 +27,13 @@ function createData(id, count, district) {
 
 const columnData = [
   { id: 'id',
-  // numeric: 'true',
+  numeric: 'true',
    disablePadding: false, label: 'Jednostka urbanistyczna' },
   { id: 'count',
-  // numeric: 'true',
+  numeric: 'true',
    disablePadding: false, label: 'Liczba rekordów' },
   { id: 'district',
-  // numeric: 'false',
+  numeric: 'false',
    disablePadding: false, label: 'Dzielnica' },
 ];
 
@@ -89,40 +90,15 @@ const styles = theme => ({
 
 });
 
-@inject("AppStore")
+@inject("TableStore")
 @observer
 
 class SummaryTable extends React.Component {
-  constructor(props, context) {
-    super(props, context);
-    let { summary } = this.props.AppStore;
-    this.state = {
-      order: 'asc',
-      orderBy: 'id',
-      data: summary.sort((a, b) => (a.id < b.id ? -1 : 1)),
-    };
-  }
-
-  handleRequestSort = (event, property) => {
-    const orderBy = property;
-    let order = 'desc';
-
-    if (this.state.orderBy === property && this.state.order === 'desc') {
-      order = 'asc';
-    }
-
-    const data =
-      order === 'desc'
-        ? this.state.data.sort((a, b) => (b[orderBy] < a[orderBy] ? -1 : 1))
-        : this.state.data.sort((a, b) => (a[orderBy] < b[orderBy] ? -1 : 1));
-        // ? this.state.data.sort((a, b) => b[orderBy].localeCompare(a[orderBy]))
-        // : this.state.data.sort((a, b) => ab[orderBy].localeCompare(b[orderBy]))
-    this.setState({ data, order, orderBy });
-  };
 
   render() {
     const { classes } = this.props;
-    const { data, order, orderBy,} = this.state;
+    let { order, orderBy, handleRequestSort, numeric, data } = this.props.TableStore;
+
     return (
       <TableContainer  className={classes.paper} component={Paper} >
         <div >
@@ -131,8 +107,9 @@ class SummaryTable extends React.Component {
 
               order={order}
               orderBy={orderBy}
+              onRequestSort={handleRequestSort.bind(this)}
 
-              onRequestSort={this.handleRequestSort}
+             numeric={columnData.numeric}
 
             />
             <TableBody>
@@ -143,9 +120,6 @@ class SummaryTable extends React.Component {
                 return (
                   <TableRow
                     hover
-                    // onClick={event => this.handleClick(event, n.id)}
-
-                    // tabIndex={-1}
                     key={n.id}
 
                   >
@@ -164,60 +138,5 @@ class SummaryTable extends React.Component {
     );
   }
 }
-
-// class SummaryTable extends React.Component {
-
-//   render() {
-//   let { summary } = this.props.AppStore;
-
-//   return (
-//     <TableContainer  className={this.props.classes.paper} component={Paper} >
-//       <Table className={this.props.classes.table} size="small" aria-label="a dense table">
-//         <TableHead>
-//           <TableRow>
-//             <TableCell className={this.props.classes.cell} align="center">Jednostka urbanistyczna
-//               {/* <TableSortLabel
-//                   active={props.sortBy === "bID"}
-//                   direction={props.sortOrder}
-//                   onClick={props.requestSort("bID")}
-//                 > */}
-
-//               {/* </TableSortLabel> */}
-//             </TableCell>
-//             <TableCell className={this.props.classes.cell} align="center">Liczba rekordów
-//               {/* <TableSortLabel
-//                   active={props.sortBy === "bcount"}
-//                   direction={props.sortOrder}
-//                   onClick={props.requestSort("bcount")}
-//                 > */}
-
-//               {/* </TableSortLabel> */}
-//             </TableCell>
-//             <TableCell className={this.props.classes.cell} align="center">Nazwa osiedla
-//               {/* <TableSortLabel
-//                   active={props.sortBy === "bcount"}
-//                   direction={props.sortOrder}
-//                   onClick={props.requestSort("bcount")}
-//                 >
-
-//               </TableSortLabel> */}
-//             </TableCell>
-
-//           </TableRow>
-//         </TableHead>
-//         <TableBody>
-//           {summary.map(row => (
-//             <TableRow key={row.id}>
-//               <TableCell className={this.props.classes.cell} align="center">{row.id}</TableCell>
-//               <TableCell className={this.props.classes.cell} align="center">{row.count}</TableCell>
-//               <TableCell className={this.props.classes.cell} align="center">{row.district}</TableCell>
-//             </TableRow>
-//           ))}
-//         </TableBody>
-//       </Table>
-//     </TableContainer>
-//   );
-//           }
-// }
 
 export default withStyles(styles)(SummaryTable);

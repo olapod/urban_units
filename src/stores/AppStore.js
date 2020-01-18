@@ -1,27 +1,14 @@
 
 import { action, computed, observable } from "mobx"
+import TableStore from './TableStore';
 import Worker from "../file.worker";
 
-class Store {
+class AppStore {
     constructor () {
+        this.tableStore = new TableStore(this)
         this.resetState();
         this.worker = new Worker();
     }
-
-//     var defaultSortBy = "bunit";
-//     var defaultSortOrder = "asc";
-//     var sortedItems = this.sortData(defaultSortBy, defaultSortOrder, data.rows);
-//     this.state = {
-//       data: {
-//         ...data,
-//         rows: sortedItems
-//       },
-//       sortBy: defaultSortBy, // default sort column
-//       sortOrder: defaultSortOrder // default sort oder
-//     };
-//   }
-
-
 
     @observable urban_units
     @observable database
@@ -40,6 +27,7 @@ class Store {
         this.converted_units = [];
         this.loading = false;
         this.error = false;
+
 
     };
 
@@ -67,10 +55,12 @@ class Store {
             this.error = data.error;
           })
     };
+
+
 };
 
-const appStore = new Store();
+// const appStore = new Store();
 
-export default appStore;
+export default AppStore;
 
 
