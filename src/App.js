@@ -18,22 +18,22 @@ class App extends React.Component {
 
   renderData() {
 
-    if (AppStore.loading) {
+    if (appStore.loading) {
       return (
-        <Spinner AppStore={AppStore}/>
+        <Spinner appStore={appStore}/>
       )};
-    if (AppStore.error || (AppStore.database.length && (!AppStore.database[0].hasOwnProperty('ulica') || !AppStore.database[0].hasOwnProperty('numer'))) || (AppStore.urban_units.length && (!AppStore.urban_units[0].hasOwnProperty('ULICA') || !AppStore.urban_units[0].hasOwnProperty('JEDNOSTKA_URBANISTYCZNA')))) {
+    if (appStore.error || (appStore.database.length && (!appStore.database[0].hasOwnProperty('ulica') || !appStore.database[0].hasOwnProperty('numer'))) || (appStore.urban_units.length && (!appStore.urban_units[0].hasOwnProperty('ULICA') || !appStore.urban_units[0].hasOwnProperty('JEDNOSTKA_URBANISTYCZNA')))) {
       return (
-         <Error AppStore={AppStore}/>
+         <Error appStore={appStore}/>
       )};
-    if(!AppStore.loading && !AppStore.summary.length) {
+    if(!appStore.loading && !appStore.summary.length) {
       return (
-        <DataLoading AppStore={AppStore}/>
+        <DataLoading appStore={appStore}/>
         )};
-    if(AppStore.summary.length) {
+    if(appStore.summary.length) {
       return (
         <div className='DataLoadingContainer'>
-          <Summary AppStore={AppStore}/>
+          <Summary appStore={appStore}/>
         </div>
       )}
   }

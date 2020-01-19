@@ -13,13 +13,12 @@ class DataUploadingDatabase extends React.Component {
         <div className='csv'>
 
           <CSVReader
-            //   label="Wybierz plik CSV z bazą danych do porównania"
-              onFileLoaded={this.props.AppStore.loadDatabase.bind(this)}
+              onFileLoaded={this.props.appStore.loadDatabase.bind(this)}
               inputStyle={{opacity: 0, width: '170px', marginLeft: '-170px'}}
               parserOptions={{header: true}}
               cssClass="csv-reader-input"
               cssInputClass='csv-input'
-              onError={this.props.AppStore.errorHandle.bind(this)}
+              onError={this.props.appStore.errorHandle.bind(this)}
               inputId="contained-button-file-2"
             />
             <label className="custom-file-upload" htmlFor="contained-button-file-2">

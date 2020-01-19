@@ -5,7 +5,7 @@ import Worker from "../file.worker";
 
 class AppStore {
     constructor () {
-        this.tableStore = new TableStore(this)
+        this.tableStore = new TableStore(this);
         this.resetState();
         this.worker = new Worker();
     }

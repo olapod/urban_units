@@ -1,5 +1,4 @@
 import { action, observable } from "mobx";
-import appStore from './AppStore'
 
 class TableStore {
     @observable order;
@@ -20,12 +19,12 @@ class TableStore {
     @action handleRequestSort = ( property, numeric) => {
         const orderBy = property;
         let order = 'desc';
-        const data =  [];
 
         if (this.orderBy === property && this.order === 'desc') {
           order = 'asc';
         };
 
+        let data =  [];
         if (order === 'desc' && numeric) {
            data = this.data.sort((a, b) => (b[orderBy] < a[orderBy] ? -1 : 1))}
         if (order === 'asc' && numeric) {

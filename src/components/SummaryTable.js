@@ -26,15 +26,9 @@ function createData(id, count, district) {
 }
 
 const columnData = [
-  { id: 'id',
-  numeric: 'true',
-   disablePadding: false, label: 'Jednostka urbanistyczna' },
-  { id: 'count',
-  numeric: 'true',
-   disablePadding: false, label: 'Liczba rekordów' },
-  { id: 'district',
-  numeric: 'false',
-   disablePadding: false, label: 'Dzielnica' },
+  { id: 'id', numeric: 'true', disablePadding: false, label: 'Jednostka urbanistyczna' },
+  { id: 'count', numeric: 'true', disablePadding: false, label: 'Liczba rekordów' },
+  { id: 'district', numeric: 'false', disablePadding: false, label: 'Dzielnica' },
 ];
 
 class EnhancedTableHead extends React.Component {
@@ -90,7 +84,7 @@ const styles = theme => ({
 
 });
 
-@inject("TableStore")
+@inject("tableStore", "appStore")
 @observer
 
 class SummaryTable extends React.Component {
@@ -104,24 +98,18 @@ class SummaryTable extends React.Component {
         <div >
           <Table className={classes.table}>
             <EnhancedTableHead
-
               order={order}
               orderBy={orderBy}
               onRequestSort={handleRequestSort.bind(this)}
-
-             numeric={columnData.numeric}
-
+              numeric={columnData.numeric}
             />
             <TableBody>
               {data
-
               .map(n => {
-
                 return (
                   <TableRow
                     hover
                     key={n.id}
-
                   >
                     <TableCell  >{n.id}</TableCell>
                     <TableCell >{n.count}</TableCell>

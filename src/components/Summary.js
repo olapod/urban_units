@@ -8,13 +8,13 @@ import SummaryTable from './SummaryTable';
 class Summary extends React.Component {
 
 render() {
-  let { problem_units, summary, database, converted_units, resetState} = this.props.AppStore;
+  let { problem_units, summary, database, converted_units, resetState} = this.props.appStore;
 
   return (
   <div className='container'>
     <div className='summary-container'>
       <h4 className='table-title'>Wynik porównania baz danych:</h4>
-      <SummaryTable AppStore={AppStore}/>
+      <SummaryTable appStore={appStore}/>
     </div>
     <div >
       <div className='summary_text'>
