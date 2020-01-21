@@ -11,13 +11,13 @@ class DataLoading extends React.Component {
 
   renderDatabase() {
 
-    if (!this.props.AppStore.database.length) {
+    if (!this.props.appStore.database.length) {
       return (
         <div className='button_container'>
         <DataUploadingDatabase />
         </div>
       )};
-    if (this.props.AppStore.database.length) {
+    if (this.props.appStore.database.length) {
         return (
           <div className='button_container'>
           <CheckCircleIcon style={{ fill: 'green', fontSize: 80 }}/>
@@ -33,13 +33,13 @@ class DataLoading extends React.Component {
 
   renderUnits() {
 
-    if (!this.props.AppStore.urban_units.length) {
+    if (!this.props.appStore.urban_units.length) {
       return (
         <div className='button_container'>
          <DataUploadingUnits />
          </div>
       )};
-    if (this.props.AppStore.urban_units.length) {
+    if (this.props.appStore.urban_units.length) {
         return (
           <div className='button_container'>
           <CheckCircleIcon style={{ fill: 'green', fontSize: 80 }}/>
@@ -51,7 +51,7 @@ class DataLoading extends React.Component {
   }
 
   render() {
-    const isEnabled = this.props.AppStore.urban_units.length > 0 && this.props.AppStore.database.length > 0;
+    const isEnabled = this.props.appStore.urban_units.length > 0 && this.props.appStore.database.length > 0;
   return (
     <div className='data_loading'>
       <div className='csv_title'>
@@ -67,7 +67,7 @@ class DataLoading extends React.Component {
         </div>
         </div>
         <div className='button_container'>
-        <Button variant="contained" disabled={!isEnabled} color='primary'onClick={this.props.AppStore.getAll}>
+        <Button variant="contained" disabled={!isEnabled} color='primary'onClick={this.props.appStore.getAll}>
           Porównaj bazy
         </Button>
         </div>

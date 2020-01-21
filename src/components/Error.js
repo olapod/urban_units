@@ -13,7 +13,7 @@ class Error extends React.Component {
                 <h4 className="error-title">Błąd. Coś poszło nie tak....</h4>
                 <p>Prawdopodobnie wgrano zły format danych.</p>
                 <div className='reset'>
-                    <Button className='reset_button' onClick={this.props.AppStore.resetState} variant="contained" color="primary" component="span" size="large">Spróbuj ponownie</Button>
+                    <Button className='reset_button' onClick={this.props.appStore.resetState} variant="contained" color="primary" component="span" size="large">Spróbuj ponownie</Button>
                 </div>
             </div>
         )};

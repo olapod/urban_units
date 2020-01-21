@@ -1,7 +1,7 @@
 import React from "react";
 import { observer, inject } from 'mobx-react';
-import AppStore from '../stores/AppStore';
-import TableStore from '../stores/TableStore';
+// import appStore from '../stores/appStore';
+// import TableStore from '../stores/TableStore';
 import { withStyles } from '@material-ui/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -32,8 +32,8 @@ const columnData = [
 ];
 
 class EnhancedTableHead extends React.Component {
-  createSortHandler = property => event => {
-    this.props.onRequestSort(event, property);
+  createSortHandler = property => numeric => {
+    this.props.onRequestSort(numeric, property);
   };
 
   render() {
@@ -91,7 +91,7 @@ class SummaryTable extends React.Component {
 
   render() {
     const { classes } = this.props;
-    let { order, orderBy, handleRequestSort, numeric, data } = this.props.TableStore;
+    let { order, orderBy, handleRequestSort, numeric, data } = this.props.tableStore;
 
     return (
       <TableContainer  className={classes.paper} component={Paper} >

@@ -1,10 +1,10 @@
 import React from "react";
 import CSVReader from 'react-csv-reader';
 import { observer, inject } from 'mobx-react';
-import AppStore from '../stores/AppStore';
+import appStore from '../stores/appStore';
 import Button from '@material-ui/core/Button';
 
-@inject("AppStore")
+@inject("appStore")
 @observer
 class DataUploadingDatabase extends React.Component {
 
@@ -13,6 +13,7 @@ class DataUploadingDatabase extends React.Component {
         <div className='csv'>
 
           <CSVReader
+            //   label="Wybierz plik CSV z bazą danych do porównania"
               onFileLoaded={this.props.appStore.loadDatabase.bind(this)}
               inputStyle={{opacity: 0, width: '170px', marginLeft: '-170px'}}
               parserOptions={{header: true}}
@@ -34,4 +35,3 @@ class DataUploadingDatabase extends React.Component {
 };
 
 export default DataUploadingDatabase;
-
