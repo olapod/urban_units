@@ -59,19 +59,16 @@ class DataLoading extends React.Component {
         <p>W celu uzyskania polskich znaków pliki powinny być kodowane w formacie UTF-8</p>
       </div>
 
-        <div className='container'>
+      <div className='container'>
         { this.renderUnits() }
         { this.renderDatabase() }
-        <div>
-
-        </div>
-        </div>
-        <div className='button_container'>
+      </div>
+      <div className='button_container'>
         <Button variant="contained" disabled={!isEnabled} color='primary'onClick={this.props.appStore.getAll}>
           Porównaj bazy
         </Button>
-        </div>
       </div>
+    </div>
     )};
 };
 

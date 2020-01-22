@@ -14,13 +14,12 @@ render() {
       return (
         <div className="spinner">
           <h3 className="spinner-title">Porównuję bazy danych....</h3>
-        <SyncLoader
-          css={override}
-          size={50}
-          color={"#3f51b5"}
-        />
-
-      </div>
+          <SyncLoader
+            css={override}
+            size={50}
+            color={"#3f51b5"}
+          />
+        </div>
     )};
 
 };

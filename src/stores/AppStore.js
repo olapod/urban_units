@@ -10,21 +10,6 @@
             this.tableStore = new TableStore(this);
         }
 
-    //     var defaultSortBy = "bunit";
-    //     var defaultSortOrder = "asc";
-    //     var sortedItems = this.sortData(defaultSortBy, defaultSortOrder, data.rows);
-    //     this.state = {
-    //       data: {
-    //         ...data,
-    //         rows: sortedItems
-    //       },
-    //       sortBy: defaultSortBy, // default sort column
-    //       sortOrder: defaultSortOrder // default sort oder
-    //     };
-    //   }
-
-
-
         @observable urban_units
         @observable database
         @observable summary
@@ -67,7 +52,9 @@
                 this.converted_units = data.converted_units;
                 this.loading = data.loading;
                 this.error = data.error;
+                this.tableStore.sortedDataforTable();
               })
+
         };
     };
 

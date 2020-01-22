@@ -14,7 +14,7 @@ render() {
   <div className='container'>
     <div className='summary-container'>
       <h4 className='table-title'>Wynik porównania baz danych:</h4>
-      <SummaryTable appStore={this.props.appStore}/>
+      <SummaryTable />
     </div>
     <div >
       <div className='summary_text'>

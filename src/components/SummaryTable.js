@@ -20,11 +20,6 @@ const tableHeadStyles = theme => ({
   }
 });
 
-
-function createData(id, count, district) {
-  return { id, count, district };
-}
-
 const columnData = [
   { id: 'id', numeric: 'true', disablePadding: false, label: 'Jednostka urbanistyczna' },
   { id: 'count', numeric: 'true', disablePadding: false, label: 'Liczba rekordów' },
@@ -46,10 +41,9 @@ class EnhancedTableHead extends React.Component {
             return (
               <TableCell
                 key={column.id}
-                // numeric={column.numeric}
+                numeric={column.numeric}
                 padding={column.disablePadding ? 'none' : 'default'}
                 sortDirection={orderBy === column.id ? order : false}
-
               >
                   <TableSortLabel
                     style={{ opacity: (orderBy === column.id) ? 1: 1 }}
@@ -59,7 +53,6 @@ class EnhancedTableHead extends React.Component {
                   >
                     {column.label}
                   </TableSortLabel>
-
               </TableCell>
             );
           }, this)}
@@ -91,7 +84,8 @@ class SummaryTable extends React.Component {
 
   render() {
     const { classes } = this.props;
-    let { order, orderBy, handleRequestSort, numeric, data } = this.props.tableStore;
+    let { order, orderBy, handleRequestSort, } = this.props.tableStore;
+    let { summary } = this.props.appStore;
 
     return (
       <TableContainer  className={classes.paper} component={Paper} >
@@ -104,7 +98,7 @@ class SummaryTable extends React.Component {
               numeric={columnData.numeric}
             />
             <TableBody>
-              {data
+              {summary
               .map(n => {
                 return (
                   <TableRow
