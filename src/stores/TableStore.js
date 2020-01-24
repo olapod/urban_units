@@ -10,35 +10,46 @@ class TableStore {
         this.orderBy = 'id';
     }
 
-    @action sortedDataforTable() {
+    @action sortedDataforTable = () => {
             const sortedData = this.appStore.summary.sort((a, b) => (a.id < b.id ? -1 : 1))
             this.appStore.summary.replace(sortedData);
         }
 
-    @action handleRequestSort(property, numeric) {
-        console.log('Testujemy:' ,this.appStore.summary )
+    @action handleRequestSort = (property, numeric) => {
+
         const orderBy = property;
-        let order = 'desc';
 
         if (this.orderBy === property && this.order === 'desc') {
-            order = 'asc';
+            this.order = 'asc';
+        }
+        else if (this.orderBy === property && this.order === 'asc') {
+            this.order = 'desc';
         };
 
-        if (order === 'desc' && numeric) {
+
+        if (this.order === 'desc' && numeric  === 'true') {
             const sortedData = this.appStore.summary.sort((a, b) => (b[orderBy] < a[orderBy] ? -1 : 1))
-            this.appStore.summary.replace(sortedData);}
+            this.appStore.summary.replace(sortedData);
+            this.orderBy = orderBy;
+        }
 
-        if (order === 'asc' && numeric) {
+        if (this.order === 'asc' && numeric  === 'true' ) {
             const sortedData = this.appStore.summary.sort((a, b) => (a[orderBy] < b[orderBy] ? -1 : 1));
-            this.appStore.summary.replace(sortedData);}
+            this.appStore.summary.replace(sortedData);
+            this.orderBy = orderBy;
+        }
 
-        if (order === 'desc' && !numeric) {
+        if (this.order === 'desc' && numeric  === 'false') {
             const sortedData = this.appStore.summary.sort((a, b) => b[orderBy].localeCompare(a[orderBy]));
-            this.appStore.summary.replace(sortedData);}
+            this.appStore.summary.replace(sortedData);
+            this.orderBy = orderBy;
+        }
 
-        else {const sortedData = this.appStore.summary.sort((a, b) => ab[orderBy].localeCompare(b[orderBy]))
-            this.appStore.summary.replace(sortedData);}
-
+        if (this.order === 'asc' && numeric  === 'false')
+        {const sortedData = this.appStore.summary.sort((a, b) => a[orderBy].localeCompare(b[orderBy]))
+            this.appStore.summary.replace(sortedData);
+            this.orderBy = orderBy;
+        }
     }
 };
 

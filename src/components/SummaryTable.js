@@ -27,8 +27,8 @@ const columnData = [
 ];
 
 class EnhancedTableHead extends React.Component {
-  createSortHandler = property => numeric => {
-    this.props.onRequestSort(numeric, property);
+  createSortHandler = (numeric, property) => {
+    this.props.onRequestSort(property, numeric);
   };
 
   render() {
@@ -49,7 +49,8 @@ class EnhancedTableHead extends React.Component {
                     style={{ opacity: (orderBy === column.id) ? 1: 1 }}
                     active={orderBy === column.id}
                     direction={order}
-                    onClick={this.createSortHandler(column.id)}
+                    //przekazywanie atrybutów do stora!!!!!!!!
+                    onClick={() => this.createSortHandler(column.numeric, column.id)}
                   >
                     {column.label}
                   </TableSortLabel>
@@ -85,6 +86,7 @@ class SummaryTable extends React.Component {
   render() {
     const { classes } = this.props;
     let { order, orderBy, handleRequestSort, } = this.props.tableStore;
+
     let { summary } = this.props.appStore;
 
     return (
@@ -94,7 +96,7 @@ class SummaryTable extends React.Component {
             <EnhancedTableHead
               order={order}
               orderBy={orderBy}
-              onRequestSort={handleRequestSort.bind(this)}
+              onRequestSort={handleRequestSort}
               numeric={columnData.numeric}
             />
             <TableBody>

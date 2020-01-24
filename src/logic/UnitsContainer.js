@@ -7,6 +7,7 @@ export default function convert_urban_units(urban_units) {
   //tworzenie poprawionej tablicy z obiektami bazy
   var streets = [];
   var numbers = [];
+  var streets2 = [];
 
   //czyszczenie bazy z pustych rekordów
   for(var i=0; i < urban_units.length; i++) {
@@ -21,31 +22,30 @@ export default function convert_urban_units(urban_units) {
       streets.push(urban_units[key].ULICA);
     }
   };
-  //usunucięcie zbędnych spacji i zamiana nazw na małe litery, usunięcie opisów dot. numerów
+  //usunięcie zbędnych spacji i zamiana nazw na małe litery, usunięcie opisów dot. numerów
   for(var i=0; i < streets.length; i++) {
-    streets[i] = streets[i].replace(/(?<=([A-ZŻŹĆĄŚĘŁÓŃ][a-zżźćńółęąś]*))((\s\d|\sparzyste|\snieparzyste|\sza wyjątkiem).*)/g, '');
-    streets[i] = streets[i].trim();
-    streets[i] = streets[i].replace(/\s{2,}/g, ' ');
-    streets[i] = streets[i].toLowerCase();
+    // streets[i] = streets[i].replace(/(?<=([A-ZŻŹĆĄŚĘŁÓŃ][a-zżźćńółęąś]*))((\s\d|\sparzyste|\snieparzyste|\sza wyjątkiem).*)/g, '');
+    streets2[i] = streets[i].match(/.+?(?=\sparzyste|\snieparzyste|\sza wyjątkiem|\s\d+\-|\s\d+,|\s\d+$)|.*/).join();
+    streets2[i] = streets2[i].trim();
+    streets2[i] = streets2[i].replace(/\s{2,}/g, ' ');
+    streets2[i] = streets2[i].toLowerCase();
 
   }
 
   //tworzenie tablicy z samymi numerami (bez liter np.1a)
-  numbers = urban_units
-    .map(unit => (unit.ULICA.replace(/(?<=\d)[^\d,\-]/gi, "")));
-
+  // numbers = urban_units.map(unit => (unit.ULICA.replace(/(?<=\d)[^\d,\-]/gi, "")));
+numbers = urban_units.map(unit => (unit.ULICA));
   //tworzenie tablicy z samymi numerami
   for(var i=0; i < numbers.length; i++) {
-    numbers[i] = numbers[i].match(/(?<=([A-ZŻŹĆĄŚĘŁÓŃ][a-zżźćńółęąś]*\s))((\d|parzyste|nieparzyste|za wyjątkiem).*)/g);
+    // numbers[i] = numbers[i].match(/(?<=([A-ZŻŹĆĄŚĘŁÓŃ][a-zżźćńółęąś]*\s))((\d|parzyste|nieparzyste|za wyjątkiem).*)/g);
+    numbers[i] = numbers[i].replace(/.+?(?=parzyste|nieparzyste|za wyjątkiem|\d+\-|\d+,|\d+$)|.*/,'')
+    numbers[i] = numbers[i].replace(/[\D]+(?=\-|$|,)/g, "")
   }
-
+  console.log('testujemy ', numbers)
   //Przerobienie w tablicę ze stringami i infinity
   for(var i=0; i < numbers.length; i++) {
-    if (numbers[i] === null) {
+    if (numbers[i] === '') {
       numbers[i] = Number.POSITIVE_INFINITY;
-    }
-    else {
-      numbers[i] = numbers[i].join();
     }
   };
 
@@ -156,14 +156,14 @@ export default function convert_urban_units(urban_units) {
     }
 
     //za wyjątkiem
-    if (str.match(/^za wyjątkiem nr/g)) {
+    if (str.match(/^za wyjątkiem/g)) {
       var exception = str.match(/\d.*/g);
       exception = exception[0].split(',').map(Number);
       var numbers = {no: Number.POSITIVE_INFINITY, exception: exception};
       return numbers;
     }
     else {
-      console.log('Sprawdzam: ', str);
+      console.log('Sprawdzam format zapsu jednostek urbanistycznych: ', str);
     }
   }
 
@@ -181,10 +181,9 @@ export default function convert_urban_units(urban_units) {
   //GOTOWA BAZA JEDNOSTEK URBANISTYCZNYCH
   var fixed_units = urban_units.map( ({ DZIELNICA, JEDNOSTKA_URBANISTYCZNA, NR_PAD, ID }) => ({ DZIELNICA, JEDNOSTKA_URBANISTYCZNA, NR_PAD, ID }) );
   for(var i=0; i < fixed_units.length; i++) {
-    fixed_units[i].ULICA = streets[i];
+    fixed_units[i].ULICA = streets2[i];
     fixed_units[i].NUMERY = fixedNumbers[i];
   }
   return fixed_units;
 }
 
-// export default convert_urban_units;
