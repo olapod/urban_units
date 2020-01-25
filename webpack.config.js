@@ -1,10 +1,15 @@
-const HtmlWebPackPlugin = require("html-webpack-plugin");
+const HtmlWebPackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 var ManifestPlugin = require('webpack-manifest-plugin');
 const WorkboxPlugin = require('workbox-webpack-plugin');
-const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 
 module.exports = {
+  // entry: './src/index.js',
+  // output: {
+  //   path: __dirname + '/dist',
+  //   filename: 'index_bundle.js'
+  // },
   devtool: 'eval-source-map',
   module: {
     rules: [
@@ -48,13 +53,14 @@ module.exports = {
       template: "./src/index.html",
       filename: "./index.html"
     }),
+    // new HtmlWebpackPlugin(),
     new MiniCssExtractPlugin({
       filename: "[name].css",
       chunkFilename: "[id].css"
     }),
     new ManifestPlugin(),
     new WorkboxPlugin.GenerateSW(),
-    new FaviconsWebpackPlugin('./src/fonts/town.svg')
+    new FaviconsWebpackPlugin()
   ],
 
 };
