@@ -8,7 +8,7 @@ module.exports = {
   entry: './src/index.js',
   output: {
     path: __dirname + '/dist',
-    filename: 'index_bundle.js'
+    filename: 'main.js'
   },
   devtool: 'eval-source-map',
   module: {
@@ -49,12 +49,11 @@ module.exports = {
     ]
   },
   plugins: [
-    // new HtmlWebPackPlugin({
-    //   template: "./src/index.html",
-    //   filename: "./index.html"
-    // }),
-    new HtmlWebpackPlugin(),
-    // new HtmlWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      template: "./src/index.html",
+      filename: "./index.html"
+    }),
+
     new MiniCssExtractPlugin({
       filename: "[name].css",
       chunkFilename: "[id].css"
