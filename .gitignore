@@ -81,3 +81,6 @@ typings/
 
 #webpack build
 dist/
+
+#firebase
+.firebase/
