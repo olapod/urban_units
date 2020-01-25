@@ -1,7 +1,5 @@
 import React from "react";
 import { observer, inject } from 'mobx-react';
-// import appStore from '../stores/appStore';
-// import TableStore from '../stores/TableStore';
 import { withStyles } from '@material-ui/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';

@@ -61,5 +61,3 @@
     const appStore = new AppStore();
 
     export default appStore;
-
-
