@@ -1,7 +1,6 @@
 const get_summary = (database, units) => {
   var summary = [];
-  console.log('Test2: ', units)
-  for (var i = 0; i < 89; i++) {
+   for (var i = 0; i < 89; i++) {
     var unit_summary = database.filter(item => item.jednostka == i).length;
     // unit_summary.toString();
     var district = units.find(item => item.JEDNOSTKA_URBANISTYCZNA == i).DZIELNICA
